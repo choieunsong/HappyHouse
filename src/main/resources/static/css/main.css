@@ -1,0 +1,19 @@
+/*맨 하단 footer*/
+.footer{
+	clear:left;
+	margin: 0 auto;
+	width: 80%;
+	max-width: 1200px;
+	height: 70px;
+}
+
+.footer ul{
+	float: right;
+}
+
+.footer li{
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 11px;
+	color:darkgray;
+}

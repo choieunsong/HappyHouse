@@ -137,21 +137,14 @@ public class MemberController {
 
 	// myPage 회원정보 수정
 	@RequestMapping(value = "/modifyMypage", method = RequestMethod.POST)
-	public String modifyMypage(@RequestBody MemberDto memberDto, Model model) {
+	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto, Model model) {
 		int cnt = memberService.modifyMember(memberDto);
-		try {
-			if (cnt != 0) {
-				List<MemberDto> list = memberService.userList();
-				System.out.println(memberDto.toString());
-				return "redirect:/";
-			} else {
-				model.addAttribute("msg", "회원정보 수정에 문제가 발생했습니다.");
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("msg", "문제가 발생했습니다.");
-			return "error/error";
+		if (cnt != 0) {
+			List<MemberDto> list = memberService.userList();
+			System.out.println(memberDto.toString());
+			return new ResponseEntity<List<MemberDto>>(list, HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
-		return "modifyMypage";
 	}
 }

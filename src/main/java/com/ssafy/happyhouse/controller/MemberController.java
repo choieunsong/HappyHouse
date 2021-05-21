@@ -41,16 +41,6 @@ public class MemberController {
 			System.out.println(memberDto.toString());
 			if (memberDto != null) {
 				session.setAttribute("userinfo", memberDto);
-
-				Cookie cookie = new Cookie("ssafy_id", memberDto.getUserid());
-				cookie.setPath("/");
-				if ("saveok".equals(map.get("idsave"))) {
-					cookie.setMaxAge(60 * 60 * 24 * 365 * 40);// 40년간 저장.
-				} else {
-					cookie.setMaxAge(0);
-				}
-				response.addCookie(cookie);
-
 			} else {
 				model.addAttribute("msg", "아이디 또는 비밀번호 확인 후 로그인해 주세요.");
 			}

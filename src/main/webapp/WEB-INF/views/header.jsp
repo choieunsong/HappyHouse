@@ -44,7 +44,9 @@
 			     </c:when>
 			      <c:otherwise>
 				    <a id="navMypage" class="dropdown-item nav-link navMypage" type="button" href="${root}/confirmPassword">My Page</a>
-				    <a id="navAdmin" class="dropdown-item nav-link navAdmin" type="button"  href="${root }/user/list">Admin</a>
+				    <%-- <c:if test = "${userinfo.state eq 1}"> --%>
+				    	<a id="navAdmin" class="dropdown-item nav-link navAdmin" type="button"  href="${root }/user/list">Admin</a>
+				    <%-- </c:if> --%>
 				    <a id="navLogout" class="dropdown-item nav-link navLogout" type="button" onclick="logoutResult()">Logout</a>
 		      	</c:otherwise>
 	       	</c:choose>
@@ -67,15 +69,17 @@
 			  <li class="nav-item">
 			  <a id="navMypage" class="nav-link navMypage">${userinfo.username}님 환영합니다.</a>
 			  </li>
-		  <li class="nav-item">
-		    <a id="navMypage" class="nav-link navMypage" type="button" href="${root}/confirmPassword">My Page</a>
-		  </li>
-		  <li class="nav-item">
-		    <a id="navAdmin" class="nav-link navAdmin" type="button" href="${root}/user/list">Admin</a>
-		  </li>
-		  <li class="nav-item">
-		    <a id="navLogout" class="nav-link navLogout" type="button" href="${root}/user/logout">Logout</a>
-		  </li>
+			  <li class="nav-item">
+			    <a id="navMypage" class="nav-link navMypage" type="button" href="${root}/confirmPassword">My Page</a>
+			  </li>
+			  <c:if test="${userinfo.state eq 1}">
+				  <li class="nav-item">
+				    <a id="navAdmin" class="nav-link navAdmin" type="button" href="${root}/user/list">Admin</a>
+				  </li>
+			  </c:if>
+			  <li class="nav-item">
+			    <a id="navLogout" class="nav-link navLogout" type="button" href="${root}/user/logout">Logout</a>
+			  </li>
 		  </c:otherwise>
 	       	</c:choose>
 		</ul>

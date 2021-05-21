@@ -9,7 +9,7 @@ public class QnAController {
 	@GetMapping("/qna")
 	public String qna() {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>QnA");
-		return "QnA";
+		return "qna";
 	}
 
 

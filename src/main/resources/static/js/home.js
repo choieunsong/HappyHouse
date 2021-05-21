@@ -106,5 +106,5 @@ function textLength(obj, num) {
 }
 
 function myRegion() {
-	alert("준비중입니다!");
+	alert("준비중입니다.");
 }

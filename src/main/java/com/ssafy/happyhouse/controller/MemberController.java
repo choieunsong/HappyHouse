@@ -143,7 +143,7 @@ public class MemberController {
 			if (cnt != 0) {
 				List<MemberDto> list = memberService.userList();
 				System.out.println(memberDto.toString());
-				return "redirect:/";
+				return "home";
 			} else {
 				model.addAttribute("msg", "회원정보 수정에 문제가 발생했습니다.");
 			}

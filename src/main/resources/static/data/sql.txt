@@ -1,0 +1,47 @@
+-- ****vue_board, vue_reply 추가 sql****
+
+use happyhouse;
+
+
+CREATE SCHEMA IF NOT EXISTS `happyhouse` DEFAULT CHARACTER SET utf8 ;
+USE `happyhouse`;
+
+-- -----------------------------------------------------
+-- Table `ssafyweb`.`ssafy_member`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `happyhouse`.`vue_reply` ;
+
+CREATE TABLE `vue_board` (
+  `no` int NOT NULL AUTO_INCREMENT,
+  `writer` VARCHAR(20) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` varchar(2000) NOT NULL,
+  `regtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`no`)
+); 
+
+
+CREATE TABLE IF NOT EXISTS `happyhouse`.`vue_reply` (
+  `no` INT NOT NULL AUTO_INCREMENT,
+  `bno` INT NOT NULL,
+  `writer` VARCHAR(20) NOT NULL,
+  `content` VARCHAR(200) NOT NULL,
+  `writetime` TIMESTAMP NULL DEFAULT current_timestamp,
+	PRIMARY KEY(`no`),	
+	FOREIGN KEY(bno) references vue_board(no)
+    on delete cascade
+  )
+ENGINE = InnoDB;
+
+
+commit;
+
+SELECT * FROM happyhouse.vue_board;
+
+INSERT INTO vue_reply (no, bno, writer, content)
+values(1, 1, 'eunsong', 'reply');
+
+
+
+-- ****admin과 일반회원 구분위한 user 테이블에 칼럼추가****
+alter table user add state boolean not null default false;

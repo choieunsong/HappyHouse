@@ -24,12 +24,16 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="#" onclick="myRegion()">공지사항</a>
 	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="${root}/qna">자유게시판</a>
+	      </li>
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">사이트맵</a>
 	        <div class="dropdown-menu">
 	          <a class="dropdown-item" href="${root }/tradingIngormation">거래정보 검색</a>
 	          <a class="dropdown-item" href="#" onclick="myRegion()">관심지역 정보</a>
 	          <a class="dropdown-item" href="#" onclick="myRegion()">공지사항</a>
+	          <a class="dropdown-item" href="${root}/qna">자유게시판</a>
 	          <div class="dropdown-divider"></div>
 	          
 	       	 <!-- 로그인 안했을 때 보여야 할 부분  &로그인 했을 때 보여야할 부분 //style="display:block;"-->

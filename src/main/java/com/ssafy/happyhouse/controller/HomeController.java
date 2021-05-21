@@ -24,5 +24,10 @@ public class HomeController {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>confirmPassword");
 		return "confirmPassword";
 	}
-
+	
+	@GetMapping("/qna")
+	public String qna() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>QnA");
+		return "qna";
+	}
 }

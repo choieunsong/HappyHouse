@@ -13,6 +13,7 @@
 	<link href="/js/chunk-vendors.10801600.js" rel="preload" as="script">
 </head>
 <body>
+	Hello
 	<noscript><strong>We're sorry but board doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
 	<div id="app"></div><script src="/js/chunk-vendors.10801600.js"></script>
 	<script src="/js/app.ff6125a3.js"></script>

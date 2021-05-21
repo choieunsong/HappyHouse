@@ -1,6 +1,5 @@
 package com.ssafy.happyhouse.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ssafy.happyhouse.model.dto.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
-
-import io.swagger.annotations.ApiParam;
 
 @Controller
 @RequestMapping("/user")
@@ -137,11 +134,12 @@ public class MemberController {
 
 	// myPage 회원정보 수정
 	@RequestMapping(value = "/modifyMypage", method = RequestMethod.POST)
-	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto, Model model) {
+	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto) {
 		int cnt = memberService.modifyMember(memberDto);
 		if (cnt != 0) {
 			List<MemberDto> list = memberService.userList();
 			System.out.println(memberDto.toString());
+			String redirect_uri = "home";
 			return new ResponseEntity<List<MemberDto>>(list, HttpStatus.OK);
 		} else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);

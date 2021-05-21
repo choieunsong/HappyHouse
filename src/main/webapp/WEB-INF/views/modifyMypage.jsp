@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <html>
+<head>
 <meta charset="UTF-8" />
 <title>CHOICHOI HOUSE MyPage</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,8 +61,8 @@ $(document).ready(function() {
 					$("#newPassword").val('');
 					$("#newEmail").val('');
 					$("#address").val('');
-					$("#signupModal").modal("hide");
-					makeList(users);
+					//makeList(users);
+					document.location.href='/happyhouse';
 				},
 				error:function(xhr,status,msg){
 					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
@@ -71,6 +72,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+</head>
 <body>
 	<!-- 상단 Header Start  -->
 	<%@ include file="/WEB-INF/views/header.jsp"%>
@@ -94,7 +96,8 @@ $(document).ready(function() {
 					<label for="password">비밀번호 (20자 이내)</label> <input type="password"
 						class="form-control" placeholder="비밀번호를 입력하세요" id="newPassword"
 						onkeyup="noSpaceForm(this); textLength(this, 20);"
-						onchange="noSpaceForm(this); textLength(this, 20);">
+						onchange="noSpaceForm(this); textLength(this, 20);"
+						>
 				</div>
 				<!-- 
 		    <div class="form-group">

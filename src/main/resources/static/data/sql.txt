@@ -44,4 +44,5 @@ values(1, 1, 'eunsong', 'reply');
 
 
 -- ****admin과 일반회원 구분위한 user 테이블에 칼럼추가****
-alter table user add state boolean not null default false;
+-- admin일 때 1, 일반회원일때 0
+alter table user add state int not null default 0;

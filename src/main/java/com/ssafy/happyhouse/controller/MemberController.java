@@ -1,6 +1,5 @@
 package com.ssafy.happyhouse.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ssafy.happyhouse.model.dto.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
-
-import io.swagger.annotations.ApiParam;
 
 @Controller
 @RequestMapping("/user")
@@ -44,16 +41,6 @@ public class MemberController {
 			System.out.println(memberDto.toString());
 			if (memberDto != null) {
 				session.setAttribute("userinfo", memberDto);
-
-				Cookie cookie = new Cookie("ssafy_id", memberDto.getUserid());
-				cookie.setPath("/");
-				if ("saveok".equals(map.get("idsave"))) {
-					cookie.setMaxAge(60 * 60 * 24 * 365 * 40);// 40년간 저장.
-				} else {
-					cookie.setMaxAge(0);
-				}
-				response.addCookie(cookie);
-
 			} else {
 				model.addAttribute("msg", "아이디 또는 비밀번호 확인 후 로그인해 주세요.");
 			}
@@ -137,11 +124,12 @@ public class MemberController {
 
 	// myPage 회원정보 수정
 	@RequestMapping(value = "/modifyMypage", method = RequestMethod.POST)
-	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto, Model model) {
+	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto) {
 		int cnt = memberService.modifyMember(memberDto);
 		if (cnt != 0) {
 			List<MemberDto> list = memberService.userList();
 			System.out.println(memberDto.toString());
+			String redirect_uri = "home";
 			return new ResponseEntity<List<MemberDto>>(list, HttpStatus.OK);
 		} else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);

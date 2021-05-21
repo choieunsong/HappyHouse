@@ -7,7 +7,7 @@ public class MemberDto{
 	private String email;
 	private String username;
 	private String address;
-
+	private int state;
 	public MemberDto() { }
 
 	public MemberDto(String userid, String password, String email, String username, String address) {
@@ -18,6 +18,14 @@ public class MemberDto{
 		this.email = email;
 		this.username = username;
 		this.address = address;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	public int getUserno() {

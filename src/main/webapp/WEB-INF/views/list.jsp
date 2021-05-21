@@ -8,19 +8,23 @@
 </c:if>
 <c:if test="${userinfo != null}">
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-	<title>happyhouse 회원목록</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CHOICHOI HOUSE 회원목록</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="${root}/css/bootstrap.css" />
     <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${root}/css/main.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src='${root}/js/home.js'></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src='${root}/js/home.js'></script>
+	
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -100,8 +104,10 @@
 			let modifyinfo = JSON.stringify({
 						"userid" : mid, 
 						"password" : $("#password" + mid).val(), 
+						"username" : $("#username"+mid).val(),
 						"email" : $("#email" + mid).val(), 
-						"address" : $("#address" + mid).val()
+						"address" : $("#address" + mid).val(),
+						"state" : $("#state"+mid).val()
 					   });
 			$.ajax({
 				url:'${root}/admin/user',  
@@ -127,7 +133,7 @@
 		
 		// 회원 탈퇴.
 		$(document).on("click", ".delBtn", function() {
-			if(confirm("정말 삭제?")) {
+			if(confirm("🔥정말 삭제하시겠습니까?🔥")) {
 				let delid = $(this).parents("tr").attr("data-id");
 				$.ajax({
 					url:'${root}/admin/user/' + delid,  
@@ -155,7 +161,7 @@
 				<td>${'${user.username}'}</td>
 				<td>${'${user.email}'}</td>
 				<td>${'${user.address}'}</td>
-				<td>${'${user.joindate}'}</td>
+				<td>${'${user.state}'}</td>
 				<td>
 					<button type="button" class="modiBtn btn btn-outline-primary btn-sm">수정</button>
 					<button type="button" class="delBtn btn btn-outline-danger btn-sm">삭제</button>
@@ -164,10 +170,10 @@
 			<tr id="mview_${'${user.userid}'}" data-id="${'${user.userid}'}" style="display: none;">
 				<td>${'${user.userid}'}</td>
 				<td><input type="text" name="password" id="password${'${user.userid}'}" value="${'${user.password}'}"></td>
-				<td>${'${user.username}'}</td>
+				<td><input type="text" name="username" id="username${'${user.userid}'}" value="${'${user.username}'}"></td>
 				<td><input type="text" name="email" id="email${'${user.userid}'}" value="${'${user.email}'}"></td>
 				<td><input type="text" name="address" id="address${'${user.userid}'}" value="${'${user.address}'}"></td>
-				<td>${'${user.joindate}'}</td>
+				<td><input type="text" name="state" id="address${'${user.userid}'}" value="${'${user.state}'}" style="width:40px"></td>
 				<td>
 					<button type="button" class="modifyBtn btn btn-primary btn-sm">수정</button>
 					<button type="button" class="cancelBtn btn btn-danger btn-sm">취소</button>
@@ -181,9 +187,9 @@
 	</script>	  
 </head>
 <body>
-<div class="container" align="center">
 <%@ include file="/WEB-INF/views/header.jsp" %>
-	<h2>회원 목록</h2>
+<div class="container" align="center">
+	<h2>CHOICHOI HOUSE 회원 목록</h2>
 	<div align="right"><button type="button" class="modiBtn btn btn-outline-info" data-toggle="modal" data-target="#userRegModal">등록</button></div>
   	<table class="table table-hover">
   		<colgroup>
@@ -202,7 +208,7 @@
 	        	<th class="text-center">이름</th>
 	        	<th class="text-center">이메일</th>
 	        	<th class="text-center">주소</th>
-	        	<th class="text-center">가입일</th>
+	        	<th class="text-center">회원등급</th>
 	        	<th class="text-center">수정/삭제</th>
 	      	</tr>
     	</thead>

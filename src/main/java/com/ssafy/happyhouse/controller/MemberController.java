@@ -29,7 +29,8 @@ import com.ssafy.happyhouse.model.service.MemberService;
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-
+	public static String username;
+	
 	@Autowired
 	private MemberService memberService;
 
@@ -47,6 +48,7 @@ public class MemberController {
 			System.out.println(map.get("password"));
 			System.out.println(memberDto.toString());
 			if (memberDto != null) {
+				username = memberDto.getUsername();
 				session.setAttribute("userinfo", memberDto);
 			} else {
 				model.addAttribute("msg", "아이디 또는 비밀번호 확인 후 로그인해 주세요.");

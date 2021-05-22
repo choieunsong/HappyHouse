@@ -87,12 +87,10 @@ public class BoardController {
     
 	
 	@RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
-	public ResponseEntity<MemberDto> getUserInfo(HttpSession session){
-		MemberDto member = (MemberDto) session.getAttribute("userinfo");
-		if(member != null) {
-			return new  ResponseEntity<MemberDto>(member, HttpStatus.OK);
-		}else {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
+	public ResponseEntity<String> getUserInfo(){
+		String username = MemberController.username;
+		
+		return new  ResponseEntity<String>(username, HttpStatus.OK);
+		
 	}
 }

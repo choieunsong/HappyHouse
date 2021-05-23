@@ -59,6 +59,7 @@ public class HouseController{
 			Map<String, Object> result = new HashMap<String, Object>();
 			result.put("result", list);
 			result.put("navi", pageNavigation.getNavigator());
+			model.addAttribute("aptList", list);
 			return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
 		}else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -82,6 +83,7 @@ public class HouseController{
 			Map<String, Object> result = new HashMap<String, Object>();
 			result.put("result", list);
 			result.put("navi", pageNavigation.getNavigator());
+			model.addAttribute("aptList", list);
 			return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
 		}else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);

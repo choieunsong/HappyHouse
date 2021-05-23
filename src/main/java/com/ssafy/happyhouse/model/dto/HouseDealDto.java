@@ -17,7 +17,21 @@ public class HouseDealDto{
 	private String rentMoney;
 	private String lat;
 	private String lng;
+	private String city;
+	private String gugun;
 	
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getGugun() {
+		return gugun;
+	}
+	public void setGugun(String gugun) {
+		this.gugun = gugun;
+	}
 	public int getNo() {
 		return no;
 	}

@@ -89,6 +89,7 @@ public class HouseController{
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 	}
+	
 	@ApiOperation("구 찾기")
 	@GetMapping("/searchGu/{city}")
 	public ResponseEntity<List<BaseAddress>> searchGu(@PathVariable("city") String city){

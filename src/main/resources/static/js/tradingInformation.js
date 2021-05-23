@@ -43,25 +43,25 @@ $(function(){
 		});
 	})
 	
-	//동 선택 
-		$('#gu').change(function(){
-			var gu = $(this).val();
-			console.log('gu 선택',gu)
-			$.ajax({
-				 url: 'deal/searchDong/' + gu,
-				 type: 'GET',
-				 contentType: 'application/json;charset=utf-8',
-				 dataType:'json',
-				 success : function(jsondata){
-					 processDongResult(jsondata);
-				 },
-				 error: function(xhr, status, err){
-						console.log(err);
-				}
-			})
+	//시군구 선택 
+	$('#gu').change(function(){
+		var gu = $(this).val();
+		console.log('gu (시군구)선택',gu)
+		$.ajax({
+			 url: 'deal/searchDong/' + gu,
+			 type: 'GET',
+			 contentType: 'application/json;charset=utf-8',
+			 dataType:'json',
+			 success : function(jsondata){
+				 processDongResult(jsondata);
+			 },
+			 error: function(xhr, status, err){
+					console.log(err);
+			}
 		})
+	})
 	
-	// 동네로 검색 
+	// 동네로 검색(검색 버튼 눌렀을 때) 
 	$('#area-search').on('click', function() {
 		var dong = $('#dong').val();
 		console.log('동으로 검색: ' + dong);
@@ -117,7 +117,7 @@ function searchByApt(aptName, pg){
 }
 
 function processGuResult(jsondata){
-	console.log('결과 도착')
+	console.log('결과 도착 GU')
 	console.log(jsondata)
 	var contents = $('#gu');
 	contents.empty();				//기존에 내용이 있으면 비우기 
@@ -128,7 +128,7 @@ function processGuResult(jsondata){
 }
 
 function processDongResult(jsondata){
-	console.log('결과 도착')
+	console.log('결과 도착 DOGN')
 	console.log(jsondata)
 	var contents = $('#dong');
 	contents.empty();				//기존에 내용이 있으면 비우기

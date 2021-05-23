@@ -3,7 +3,7 @@
     
 <!DOCTYPE html>
  <footer>
- 	<div align="center">
+ 	<div align="center" style="margin-top: 100px;">
       <ul class="footer">
         <li><a class="" href="#">서울시 강남구 테헤란로 멀티스퀘어</a></li>
         <li><a class="" href="#">1544-9001</a></li>

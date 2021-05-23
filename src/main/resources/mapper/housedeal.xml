@@ -3,22 +3,29 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssafy.happyhouse.model.dao.HouseDealDao" >
-	
+	<!-- 아파트로 찾기 -->
 	<select id="searchApt" parameterType="map" resultType="houseDealDto">
-		select 	h.no, h.dong, h.AptName, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.type, b.lat, b.lng
-		from	housedeal h left outer join baseaddress b
+		select 	h.no, h.AptName, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, b.dong, i.lat, i.lng, i.buildYear
+		from	housedeal h 
+		left 	outer join baseaddress b
 		using	(dong)
-		where	AptName like concat('%', #{aptName}, '%')
-		order 	by no 
+		left 	outer join houseinfo i
+		on		h.AptName = i.AptName
+		where	h.AptName like concat('%', #{aptName}, '%')
+		order 	by h.no 
 		limit	#{start}, #{spp}
 	</select>
 	
+	<!-- 동으로 찾기 -->
 	<select id="searchHouse" parameterType="map" resultType="houseDealDto">
-		select 	h.no, h.dong, h.AptName, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.type, b.lat, b.lng
-		from	housedeal h left outer join baseaddress b
+		select 	h.no, h.AptName, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, b.dong, i.lat, i.lng, i.buildYear
+		from	housedeal h 
+		left 	outer join baseaddress b
 		using	(dong)
-		where	dong = #{dong}
-		order	by no
+		left 	outer join houseinfo i
+		on		h.AptName = i.AptName and h.dong = i.dong
+		where	h.dong = #{dong}
+		order	by h.no
 		limit	#{start}, #{spp}
 	</select>
 	

@@ -24,11 +24,12 @@
     <script>
 
     var locations =[];
+    var searchFlag = false;
     <c:choose>
     	<c:when  test='${!empty houses}'>
-    		<c:forEach items='${houses}' var='house'>
+    		/* <c:forEach items='${houses}' var='house'>
     			locations.push(['${house.aptName}', '${house.lat}', '${house.lng}'])
-    		</c:forEach>
+    		</c:forEach> */
     	</c:when>
     	<c:otherwise>
     		locations = [
@@ -65,7 +66,7 @@
  		<c:when test='${!empty mainAttent}'>
 				var lat = ${mainAttent.lat}
 				var lng = ${mainAttent.lng}
-				var zoom = 15
+				var zoom = 11
 		</c:when>
 		<c:otherwise>
 			var lat = 37.606991
@@ -88,28 +89,52 @@
             var infowindow = new google.maps.InfoWindow();
 
 		    var marker, i;
-		    for (i = 0; i < locations.length; i++) {  
-		      marker = new google.maps.Marker({
-			        id:i,
-			        title : locations[i][0],
-			        label : locations[i][0],
-			        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-			        map: map
-		      });
-
-		      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		    console.log("----------------initmap");
+		    console.log(locations);
+		    console.log("len: "+locations.length);
+		    for (i = 0; i < locations.length; i++) { 
+			   marker = new google.maps.Marker({
+			      id:i,
+			      title : locations[i][0],
+			      label : locations[i][0],
+			      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			      map: map
+			   });		    		
+		    	
+		    /*  google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		        return function() {
-		          infowindow.setContent(locations[i][0]);
-		          infowindow.open(map, marker);
-		        }
-		      })(marker, i));
+		        	 if(searchFlag){
+			           	infowindow.setContent(locations[i][3]);
+			          	infowindow.open(map, marker);
+		        	}else{
+		        		infowindow.setContent(locations[i][0]);
+			          	infowindow.open(map, marker);
+		        	}
+		        } 
+		      })(marker, i));  */
 		      
-		      if(marker) {
-		        marker.addListener('click', function() {
-		        	console.log(this.title);
-		      	    map.setZoom(15);
-		        	 map.panTo(this.getPosition());
-		       	 });
+		      if(marker && searchFlag) {
+			        marker.addListener('click', function() {
+			      	  	let i = this.id;
+			      	  	
+			      	  	// 거래 상세 정보 모달창 띄우기 
+			      	  	$('#aptInfoModal #aptName').text(locations[i][3]);
+						let address = locations[i][7]+" "+locations[i][13]+" "+locations[i][0]+" "+locations[i][14] +"번지";
+						$('#aptInfoModal #address').text(address);
+						$('#aptInfoModal #area').text(locations[i][5]);
+						$('#aptInfoModal #dealAmount').text(locations[i][8]);
+						let dealDate = locations[i][11]+"."+locations[i][10]+"."+locations[i][9];
+						$('#aptInfoModal #dealDate').text(dealDate);
+						$('#aptInfoModal #floor').text(locations[i][12]+"층");
+						$('#aptInfoModal #buildYear').text(locations[i][6]+"년");
+						
+						$('#aptInfoModal').modal('show');
+			       	 });
+				
+			        marker.addListener('dblclick', function(){
+			        	 map.setZoom(15);
+			        	 map.panTo(this.getPosition());
+			        }); 
 		       }
 		    }
 		}
@@ -347,25 +372,27 @@
                 <table class="table table-hover mt-2">
                     <thead>
                       <tr>
+                      	<th style="display: none;">no</th>
                       	<th>동</th>
                         <th>이름</th>
                         <th>거래금액</th>
                         <th>전용면적</th>
-                        <th>거래구분</th>
+                        <th>층수</th>
                         <th>거래일</th>
                       </tr>
                     </thead>
                     <tbody id="table-body">
-                    
+                    	
                     </tbody>
                 </table>
                 
-            	<table class="table table-hover mt-2" name="navi" id="navi">
-              		<tr>
-              			<td></td>
-              		</tr>
-             	</table>
-               	
+                <div class="d-flex justify-content-center">
+	            	<table class="table table-hover mt-2" name="navi" id="navi">
+	              		<tr>
+	              			<td></td>
+	              		</tr>
+	             	</table>
+               	</div>
             </div>
             
         </div>

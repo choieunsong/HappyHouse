@@ -1,4 +1,9 @@
+
+var aptList = [];
+
 $(function(){
+	
+	
 	$('#radio-dong').click(function() {
 		$(".dong-view").css("display", "block");
 		$(".apt-view").css("display", "none");
@@ -78,7 +83,34 @@ $(function(){
 	$('#area-add').on('click', function(){
 		alert("준비중입니다 !");
 	})
+	
+	// 아파트 상세 정보 띄우기(모달창) 
+	$("#table-body").on("click", ".apt-row", function(event){
+		let aptNo = $(this).find("td").first().text().trim();
+		console.log(aptNo);
+		
+		aptList.forEach(function(apt){
+			if(apt.no == aptNo) {
+				$('#aptInfoModal #aptName').text(apt.aptName);
+				let address = `${apt.city} ${apt.gugun} ${apt.dong} ${apt.jibun}번지`;
+				$('#aptInfoModal #address').text(address);
+				$('#aptInfoModal #area').text(apt.area);
+				$('#aptInfoModal #dealAmount').text(apt.dealAmount);
+				let dealDate = `${apt.dealYear}.${apt.dealMonth}.${apt.dealDay}`;
+				$('#aptInfoModal #dealDate').text(dealDate);
+				$('#aptInfoModal #floor').text(apt.floor+"층");
+				$('#aptInfoModal #buildYear').text(apt.buildYear+"년");
+			}
+		})
+		
+		$('#aptInfoModal').modal('show');
+	});
+	
+	
 });
+
+
+//////////////////////////////////////////////
 
 function searchByDong(dong, pg){
 	$.ajax({
@@ -145,33 +177,43 @@ function searchResult(data){
 		let str = `<tr><td>검색결과가 없습니다.</td></tr>`
 		$('#table-body').append(str);
 	}else{
+		// 지도 마커 찍기 
 		setLocation(data.result);
+		
 		// 바디 처리 
+//		console.log(data.result);
+		aptList = [];
 		$(data.result).each(function(index, apt){
 			let str = `
-			<tr>
-				<td> ${apt.dong}</td>
-				<td> ${apt.aptName}</td>
-				<td> ${apt.dealAmount}</td>
-				<td> ${apt.area}</td>
-				<td> ${apt.type}</td>
-				<td> ${apt.dealYear}.${apt.dealMonth}.${apt.dealDay} </td>
-			`
-				console.log(str);
-				$('#table-body').append(str);
+			<tr class="apt-row">
+				<td class="aptNo" style="display: none;">${apt.no}</td>
+				<td>${apt.dong}</td>
+				<td>${apt.aptName}</td>
+				<td>${apt.dealAmount}</td>
+				<td>${apt.area}</td>
+				<td>${apt.floor}</td>
+				<td>${apt.dealYear}.${apt.dealMonth}.${apt.dealDay} </td>
+			</tr>`
+//			console.log(str);
+			$('#table-body').append(str);
+			
+			aptList.push(apt);
 		});
 		// 네비 처리 
 		$('#navi tr td').empty();
-		console.log(data.navi);
+//		console.log(data.navi);
 		$('#navi tr td').append(data.navi);
 	}
 }
 
 function setLocation(data){
+	searchFlag = true;
+	
 	console.log("setLocation");
 	locations = [];
 	$(data).each(function(index, apt){
-		locations.push([apt.dong, apt.lat, apt.lng]);
+		locations.push([apt.dong, apt.lat, apt.lng, apt.aptName,apt.no, apt.area, apt.buildYear, apt.city, apt.dealAmount, 
+			apt.dealDay, apt.dealMonth, apt.dealYear, apt.floor, apt.gugun, apt.jibun]);
 	});
 	console.log(locations);
 	initMap();

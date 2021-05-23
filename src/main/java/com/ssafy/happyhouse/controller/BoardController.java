@@ -2,6 +2,8 @@ package com.ssafy.happyhouse.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.dto.Board;
+import com.ssafy.happyhouse.model.dto.MemberDto;
 import com.ssafy.happyhouse.model.service.BoardService;
 
 import io.swagger.annotations.ApiOperation;
@@ -79,5 +83,14 @@ public class BoardController {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
+	}
+    
+	
+	@RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
+	public ResponseEntity<String> getUserInfo(){
+		String username = MemberController.username;
+		
+		return new  ResponseEntity<String>(username, HttpStatus.OK);
+		
 	}
 }

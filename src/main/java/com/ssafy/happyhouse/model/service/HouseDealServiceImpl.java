@@ -17,17 +17,17 @@ public class HouseDealServiceImpl implements HouseDealService {
 
 	@Autowired
 	HouseDealDao houseDealDao;
+	private static final int spp = 10;
 	
 	@Override
 	public List<HouseDealDto> searchHouse(String dong, String pageNo){
 		System.out.println("service: dong " + dong+", pageNo: " + pageNo);
 		Map<String, Object> param = new HashMap<String, Object>();
 		
-		int spp = 5;
 		int pg = Integer.parseInt(pageNo);
 		param.put("dong", dong);
 		param.put("start", (pg - 1) * spp);
-		param.put("spp", 5);
+		param.put("spp", spp);
 		return houseDealDao.searchHouse(param);
 	}
 
@@ -46,11 +46,10 @@ public class HouseDealServiceImpl implements HouseDealService {
 		System.out.println("service: aptName " + aptName +", pageNo: " + pageNo);
 		Map<String, Object> param = new HashMap<String, Object>();
 		
-		int spp = 5;
 		int pg = Integer.parseInt(pageNo);
 		param.put("aptName", aptName);
 		param.put("start", (pg - 1) * spp);
-		param.put("spp", 5);
+		param.put("spp", spp);
 		System.out.println("aptName: " + param.get("aptName") + "start: " + param.get("start") + "spp: " + param.get("spp"));
 		return houseDealDao.searchApt(param);
 	}
@@ -59,7 +58,7 @@ public class HouseDealServiceImpl implements HouseDealService {
 	public PageNavigation makePageNavigation(Map<String, String> map) {
 		int navSize = 10;
 		int currentPage = Integer.parseInt(map.get("pageNo"));
-		int sizePerPage = 5;
+		int sizePerPage = spp;
 		PageNavigation pageNavigation = new PageNavigation();
 		pageNavigation.setCurrentPage(currentPage);
 		pageNavigation.setNaviSize(navSize);

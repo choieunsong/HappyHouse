@@ -97,7 +97,7 @@
 	      <!-- Modal body -->
 	      <div class="modal-body">
 	      	<form id="userloginform" method="post" action="">
-	      	<input type="hidden" name="action" id="action" value="login">
+	      	<input type="hidden" name="action" value="login">
 			    <div class="form-group">
 			      <label for="ID">아이디</label>
 			      <input id="inputID" type="text" class="form-control" name="userid" placeholder="아이디를 입력하세요.">
@@ -137,7 +137,7 @@
 	      <!-- Modal body -->
 	      <div class="modal-body">
 	      	<form id="findPasswordform" action="" method="post">
-	      	<input type="hidden" name="action" id="action" value="login">
+	      	<input type="hidden" name="action" value="login">
 			    <div class="form-group">
 			      <label for="ID">아이디</label>
 			      <input id="findpw-userid" type="text" class="form-control" name="userid" placeholder="아이디를 입력하세요.">
@@ -174,7 +174,7 @@
 	      <!-- Modal body -->
 	      <div class="modal-body">
 			<form id="userinsertform" action="" method="post">
-			<input type="hidden" name="action" id="action" value="signup">
+			<input type="hidden" name="action" value="signup">
 			    <div class="form-group">
 			      <label for="ID">아이디 (20자 이내)</label>
 			      <input type="text" class="form-control" placeholder="사용할 아이디를 입력하세요." id="newUserID" name="userid" 
@@ -247,3 +247,53 @@
 	  </div>
 	</div>
 	<!-- 회원가입 Modal End -->
+	
+	
+	<!--  아파트 상세 거래 내역  --> 
+<div class="modal fade" id="aptInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">아파트 상세정보</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-borderless">
+        	<tr>
+        		<th scope="col">아파트이름: </th>
+        		<td id="aptName"></td>
+        	</tr>
+        	<tr>
+        		<th scope="col">주소: </th>
+        		<td id="address"></td>
+        	</tr>
+        	<tr>
+        		<th scope="col">면적: </th>
+        		<td id="area"></td>
+        	</tr>
+        	<tr>
+        		<th scope="col">거래가: </th>
+        		<td id="dealAmount"></td>
+        	</tr>
+        	<tr>
+        		<th scope="col">거래일: </th>
+        		<td id="dealDate"></td>
+        	</tr>
+        	<tr>
+        		<th scope="col">층수: </th>
+        		<td id="floor"></td>
+        	</tr>
+        	<tr>
+        		<th scope="col">시공일: </th>
+        		<td id="buildYear"></td>
+        	</tr>
+		</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

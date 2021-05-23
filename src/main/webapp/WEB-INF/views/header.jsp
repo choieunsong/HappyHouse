@@ -5,7 +5,7 @@
 	<nav class="navbar navbar-expand-sm navbar-light bg-light">
 	  <!-- Brand/logo -->
 	  <a class="navbar-brand" href="${root}">
-		<img src="img/logo_happyhouse.png" alt="logo" style="width:100px;">
+		<img src="${root}/img/logo.png" alt="logo" style="width:80px;">
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
@@ -86,3 +86,5 @@
 	  </div>
 	</nav>
     </header>
+    
+    

@@ -13,23 +13,27 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/api.css" />
+
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript" src='js/tradingInformation.js'></script>
-    <script type="text/javascript" src='js/home.js'></script>
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <script type="text/javascript" src='${root }/js/tradingInformation.js'></script>
+    <script type="text/javascript" src='${root }/js/home.js'></script>
+    <script type="text/javascript" src='${root }/js/popper.min.js'></script>
     
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQNYJGXUNDcJDpAZUWg8MV4nh27G5S5hM&callback=initMap&libraries=&v=weekly"></script>
+    <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQNYJGXUNDcJDpAZUWg8MV4nh27G5S5hM&callback=initMap&libraries=&v=weekly"></script> -->
+    
+    
     <script>
 
-    var locations =[];
+   /*  var locations =[];
     var searchFlag = false;
     <c:choose>
     	<c:when  test='${!empty houses}'>
-    		/* <c:forEach items='${houses}' var='house'>
-    			locations.push(['${house.aptName}', '${house.lat}', '${house.lng}'])
-    		</c:forEach> */
+    		
     	</c:when>
     	<c:otherwise>
     		locations = [
@@ -99,25 +103,14 @@
 			      label : locations[i][0],
 			      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
 			      map: map
-			   });		    		
-		    	
-		    /*  google.maps.event.addListener(marker, 'click', (function(marker, i) {
-		        return function() {
-		        	 if(searchFlag){
-			           	infowindow.setContent(locations[i][3]);
-			          	infowindow.open(map, marker);
-		        	}else{
-		        		infowindow.setContent(locations[i][0]);
-			          	infowindow.open(map, marker);
-		        	}
-		        } 
-		      })(marker, i));  */
+			   });		    	
 		      
 		      if(marker && searchFlag) {
 			        marker.addListener('click', function() {
 			      	  	let i = this.id;
 			      	  	
 			      	  	// 거래 상세 정보 모달창 띄우기 
+			      	  	$('#aptInfoModal #modal-aptNo').text(locations[i][4]);
 			      	  	$('#aptInfoModal #aptName').text(locations[i][3]);
 						let address = locations[i][7]+" "+locations[i][13]+" "+locations[i][0]+" "+locations[i][14] +"번지";
 						$('#aptInfoModal #address').text(address);
@@ -137,9 +130,9 @@
 			        }); 
 		       }
 		    }
-		}
-        
-
+		} */
+ 
+		
         function myRegion() {
         	alert("준비중입니다!");
         }
@@ -148,6 +141,22 @@
         #map{
             height: 100%;
         }
+        
+        .not-favorite{
+        	color: lightgray;
+        }
+	 	.not-favorite:hover{
+        	color: pink;
+        }
+        
+        .favorite{
+        	color: pink;
+        }
+        
+        .favorite:hover{
+        	color: lightgray;
+        }
+        
     </style>
     
  
@@ -252,18 +261,48 @@
 
                 <div class="apt-view mt-2" style="display: none;">
 
-                    <div class = "row">
+                    <div class = "row" style="margin: 0 0 20px auto;">
                         <input type="text" class="form-control col-sm-9 pd-2" placeholder="아파트명 검색" id="apt-input">
                         <button type="button" class="btn btn-primary btn-block col-sm-3 " id="apt-search">검색</button>
                     </div>
-
-                      
                 </div>
+                
+                
                 <!-- 구글 지도  -->
-                <div class="mt-3" style="height :500px">
+               <!--  <div class="mt-3" style="height :500px">
                     <div id="map"></div>
                  
-                </div>
+                </div> -->
+                <!-- 카카오 -->
+                <div class="map_wrap">
+				    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+				    <ul id="category">
+				        <li id="BK9" data-order="0"> 
+				            <span class="category_bg bank"></span>
+				            은행
+				        </li>       
+				        <li id="MT1" data-order="1"> 
+				            <span class="category_bg mart"></span>
+				            마트
+				        </li>  
+				        <li id="PM9" data-order="2"> 
+				            <span class="category_bg pharmacy"></span>
+				            약국
+				        </li>  
+				        <li id="OL7" data-order="3"> 
+				            <span class="category_bg oil"></span>
+				            주유소
+				        </li>  
+				        <li id="CE7" data-order="4"> 
+				            <span class="category_bg cafe"></span>
+				            카페
+				        </li>  
+				        <li id="CS2" data-order="5"> 
+				            <span class="category_bg store"></span>
+				            편의점
+				        </li>      
+				    </ul>
+				</div>
 
                 <div class = "row mt-5">
                     <h3 class="text-secondary ml-3 mr-auto" id ="current-area"> </h3>
@@ -288,13 +327,12 @@
                     </tbody>
                 </table>
                 
-                <div class="d-flex justify-content-center">
-	            	<table class="table table-hover mt-2" name="navi" id="navi">
-	              		<tr>
-	              			<td></td>
-	              		</tr>
-	             	</table>
-               	</div>
+            	<table class="table table-hover mt-2" name="navi" id="navi" style="margin-left: auto; margin-right: auto;">
+              		<tr>
+              			<td style="text-align: center;"></td>
+              		</tr>
+             	</table> 
+             	
             </div>
             
         </div>
@@ -305,5 +343,7 @@
     
    <!-- 모달 -->
    	<%@include file="/WEB-INF/views/modal.jsp" %>
+   	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services"></script>
+   	<script type="text/javascript" src='${root }/js/commercial.js'></script>
 </body>
 </html>

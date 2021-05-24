@@ -30,4 +30,10 @@ public class HomeController {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>QnA");
 		return "qna";
 	}
+	
+	@GetMapping("/favorite")
+	public String favorite() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite");
+		return "favoriteLocation";
+	}
 }

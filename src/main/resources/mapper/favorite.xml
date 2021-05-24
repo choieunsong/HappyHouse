@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.mapper.FavoriteDAO">
+	<!-- favorite 가져오기 -->
+	<select id="getFavorite" parameterType="int" resultType="favorite">
+		select *
+		from user_favorite
+		where userno = #{userno}
+	</select>
+	
+	<!-- favorite 입력하기 -->
+	<insert id="addFavorite" parameterType="favorite">
+		insert into user_favorite(no, userno, dealno, AptName,dong)
+		values(#{no}, #{userno}, #{dealno}, #{aptName}, #{dong});
+	</insert>
+	
+	<!-- favorite 삭제하기 -->
+	<delete id="removeFavorite" parameterType="int">
+		delete from user_favorite
+		where no = #{no};
+	</delete>
+</mapper>

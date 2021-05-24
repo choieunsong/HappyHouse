@@ -25,10 +25,10 @@
 		
 		
 		<title>자유게시판</title>
-		 <link href="${root }/css/app.cc5241b1.css" rel="preload" as="style">
-	    <link href="${root }/js/app.45d528ec.js" rel="preload" as="script">
-	    <link href="${root }/js/chunk-vendors.32cab876.js" rel="preload" as="script">
-	    <link href="${root }/css/app.cc5241b1.css" rel="stylesheet">
+		 <link href="${root }/vuejs/css/app.css" rel="preload" as="style">
+	    <link href="${root }/vuejs/js/app.js" rel="preload" as="script">
+	    <link href="${root }/vuejs/js/chunk-vendors.js" rel="preload" as="script">
+	    <link href="${root }/vuejs/css/app.css" rel="stylesheet">
 	</head>
 	<body>
 	
@@ -36,8 +36,8 @@
 	<%@ include file="/WEB-INF/views/header.jsp" %>
 	
 	<div id="app"></div>
-	<script src="${root }/js/chunk-vendors.32cab876.js"></script>
-	<script src="${root }/js/app.45d528ec.js"></script>
+	<script src="${root }/vuejs/js/chunk-vendors.js"></script>
+	<script src="${root }/vuejs/js/app.js"></script>
 	
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 </body>

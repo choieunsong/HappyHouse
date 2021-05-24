@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
      <link rel="stylesheet" type="text/css" href="${root}/css/dropdown.css"/>
+     
     <script>
     $(document).ready(function() {
     	// 로그인
@@ -261,6 +262,9 @@
       </div>
       <div class="modal-body">
         <table class="table table-borderless">
+        	<tr style="display: none">
+        		<td id="modal-aptNo"></td>
+        	</tr>
         	<tr>
         		<th scope="col">아파트이름: </th>
         		<td id="aptName"></td>
@@ -290,6 +294,11 @@
         		<td id="buildYear"></td>
         	</tr>
 		</table>
+		<div class="text-right">
+			<p style="display:none" id="isFavorite"></p>
+			<i id="favorite-icon" class="fab fa-gratipay fa-3x favorite" data-toggle="tooltip" data-placement="top" title="관심지역 제거" style="display:none;"></i>
+			<i id="favorite-icon" class="fab fa-gratipay fa-3x not-favorite" data-toggle="tooltip" data-placement="top" title="관심지역 추기"></i>
+		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

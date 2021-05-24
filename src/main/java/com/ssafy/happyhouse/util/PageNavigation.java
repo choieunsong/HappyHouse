@@ -86,7 +86,7 @@ public class PageNavigation {
 			endPage = totalPageCount;
 		
 		StringBuilder buffer = new StringBuilder();
-		buffer.append("		<ul class=\"pagination\"> \n");
+		buffer.append("		<ul class=\"pagination\" \n");
 		buffer.append("			<li class=\"page-item\" data-pg=\"1\"> \n");
 		buffer.append("				<a href=\"#\" class=\"page-link\">최신</a> \n");
 		buffer.append("			</li> \n");

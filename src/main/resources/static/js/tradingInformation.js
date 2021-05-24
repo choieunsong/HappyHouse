@@ -2,11 +2,18 @@
 var aptList = [];
 
 $(function(){
-	
-	
 	$('#radio-dong').click(function() {
 		$(".dong-view").css("display", "block");
 		$(".apt-view").css("display", "none");
+		$(".area-search-div").css("display", "block");
+		$(".commercial-search-div").css("display", "none");
+	})
+	$('#radio-commercial').click(function() {
+		$(".dong-view").css("display", "block");
+		$(".apt-view").css("display", "none");
+		$(".area-search-div").css("display", "none");
+		$(".commercial-search-div").css("display", "block");
+		
 	})
 	$('#radio-apt').click(function() {
 		$(".dong-view").css("display", "none");
@@ -73,6 +80,15 @@ $(function(){
 		searchByDong(dong, 1);
 	});
 	
+	// 상권 검색버튼 눌렀을 때
+	$('#commercial-search').on('click', function() {
+		var dong = $('#dong').val();
+		var guCode = $('#gu').val();
+		console.log('동으로 상권 검색: ' + dong);
+		console.log('구코드는?: ' + guCode);
+		searchByCommercial(dong, guCode, 1);
+	});
+	
 	// 아파트로 검색 
 	$('#apt-search').on('click', function() {
 		aptName = $('#apt-input').val();
@@ -123,6 +139,22 @@ function searchByDong(dong, pg){
 		 },
 		 error: function(xhr, status, err){
 				console.log(err);
+		}
+	});
+}
+
+function searchByCommercial(dong, guCode, pg){
+	$.ajax({
+		url: 'commercial/' + dong +"/"+ guCode+"/"+pg,
+		type: 'GET',
+		contentType: 'application/json;charset=utf-8',
+		dataType:'json',
+		success : function(jsondata){
+			console.log("가져온 제이슨데이터:"+jsondata.city);
+			commercialSearchResult(jsondata);
+		},
+		error: function(xhr, status, err){
+			console.log(err);
 		}
 	});
 }
@@ -193,6 +225,39 @@ function searchResult(data){
 				<td>${apt.area}</td>
 				<td>${apt.floor}</td>
 				<td>${apt.dealYear}.${apt.dealMonth}.${apt.dealDay} </td>
+			</tr>`
+//			console.log(str);
+			$('#table-body').append(str);
+			
+			aptList.push(apt);
+		});
+		// 네비 처리 
+		$('#navi tr td').empty();
+//		console.log(data.navi);
+		$('#navi tr td').append(data.navi);
+	}
+}
+
+function commercialSearchResult(data){
+	console.log("search commercial result");
+	$('#table-body').empty();
+	if(data == null){
+		let str = `<tr><td>검색결과가 없습니다.</td></tr>`
+		$('#table-body').append(str);
+	}else{
+		// 지도 마커 찍기 
+		setLocation(data.result);
+		
+		// 바디 처리 
+//		console.log(data.result);
+		commercialList = [];
+		$(data.result).each(function(index, commercial){
+			let str = `
+			<tr class="commercial-row">
+				<td class="aptNo" style="display: none;">${commercial.no}</td>
+				<td>${commercial.dongName}</td>
+				<td>${commercial.bizesNm}</td>
+				<td>${commercial.indsLclsNm}</td>
 			</tr>`
 //			console.log(str);
 			$('#table-body').append(str);

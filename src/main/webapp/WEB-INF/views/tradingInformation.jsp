@@ -20,11 +20,15 @@
     <script type="text/javascript" src='js/tradingInformation.js'></script>
     <script type="text/javascript" src='js/home.js'></script>
     
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQNYJGXUNDcJDpAZUWg8MV4nh27G5S5hM&callback=initMap&libraries=&v=weekly"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=36a1f3527557f55ee6c7c938510fd87b&libraries=services,clusterer,drawing"></script>
+   	<link rel="stylesheet" href="css/api.css" />
+    
+    <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQNYJGXUNDcJDpAZUWg8MV4nh27G5S5hM&callback=initMap&libraries=&v=weekly"></script> -->
     <script>
 
     var locations =[];
     var searchFlag = false;
+    
     <c:choose>
     	<c:when  test='${!empty houses}'>
     		/* <c:forEach items='${houses}' var='house'>
@@ -149,106 +153,6 @@
             height: 100%;
         }
     </style>
-    
-    <script>
-
-    var locations =[];
-    <c:choose>
-    	<c:when  test='${!empty houses}'>
-    		<c:forEach items='${houses}' var='house'>
-    			locations.push(['${house.aptName}', '${house.lat}', '${house.lng}'])
-    		</c:forEach>
-    	</c:when>
-    	<c:otherwise>
-    		locations = [
-    			  	['도봉구'	,	37.6658609	,	127.0317674	],
-    				 ['은평구'	,	37.6176125	,	126.9227004	],
-    				 ['동대문구'	,	37.5838012	,	127.0507003	],
-    				 ['동작구'	,	37.4965037	,	126.9443073	],
-    				 ['금천구'	,	37.4600969	,	126.9001546	],
-    				 ['구로구'	,	37.4954856	,	126.858121	],
-    				 ['종로구'	,	37.5990998	,	126.9861493	],
-    				 ['강북구'	,	37.6469954	,	127.0147158	],
-    				 ['중랑구'	,	37.5953795	,	127.0939669	],
-    				 ['강남구'	,	37.4959854	,	127.0664091	],
-    				 ['강서구'	,	37.5657617	,	126.8226561	],
-    				 ['중구'	,	37.5579452	,	126.9941904	],
-    				 ['강동구'	,	37.5492077	,	127.1464824	],
-    				 ['광진구'	,	37.5481445	,	127.0857528	],
-    				 ['마포구'	,	37.5622906	,	126.9087803	],
-    				 ['서초구'	,	37.4769528	,	127.0378103	],
-    				 ['성북구'	,	37.606991	,	127.0232185	],
-    				 ['노원구'	,	37.655264	,	127.0771201	],
-    				 ['송파구'	,	37.5048534	,	127.1144822	],
-    				 ['서대문구'	,	37.5820369	,	126.9356665	],
-    				 ['양천구'	,	37.5270616	,	126.8561534	],
-    				 ['영등포구'	,	37.520641	,	126.9139242	],
-    				 ['관악구'	,	37.4653993	,	126.9438071	],
-    				 ['성동구'	,	37.5506753	,	127.0409622	],
-    				 ['용산구'	,	37.5311008	,	126.9810742	]
-    		 ];
-    	</c:otherwise>
-    </c:choose>
-    
-    <c:choose>
- 		<c:when test='${!empty mainAttent}'>
-				var lat = ${mainAttent.lat}
-				var lng = ${mainAttent.lng}
-				var zoom = 15
-		</c:when>
-		<c:otherwise>
-			var lat = 37.606991
-			var lng = 127.0232185
-			var zoom = 11
-		</c:otherwise>
-	</c:choose>
-
-    	var map = null;
-    	var latitude;
-    	var longitude;
-
-        function initMap() {
-        	var opt = {
-					// google map에 중앙으로 표시할 좌표 설정
-					center : {lat:lat,lng: lng},
-					zoom : zoom,  //0~ 21  큰 값일 수록  zooming
-					};
-            map = new google.maps.Map(document.getElementById("map"), opt);
-            var infowindow = new google.maps.InfoWindow();
-
-		    var marker, i;
-		    for (i = 0; i < locations.length; i++) {  
-		      marker = new google.maps.Marker({
-			        id:i,
-			        title : locations[i][0],
-			        label : locations[i][0],
-			        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-			        map: map
-		      });
-
-		      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-		        return function() {
-		          infowindow.setContent(locations[i][0]);
-		          infowindow.open(map, marker);
-		        }
-		      })(marker, i));
-		      
-		      if(marker) {
-		        marker.addListener('click', function() {
-		        	console.log(this.title);
-		      	    map.setZoom(15);
-		        	 map.panTo(this.getPosition());
-		       	 });
-		       }
-		    }
-		}
-        
-
-        function myRegion() {
-        	alert("준비중입니다!");
-        }
-    </script>
- 
 </head>
 <body>
     <%@ include file="/WEB-INF/views/header.jsp" %>
@@ -269,6 +173,11 @@
                     <div class="form-check-inline">
                         <label class="form-check-label" for="radio-apt">
                             <input type="radio" class="form-check-input" id="radio-apt" name="optradio" value="apt">아파트별 검색
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="radio-commercial">
+                            <input type="radio" class="form-check-input" id="radio-commercial" name="optradio" value="commercial">상권 검색
                         </label>
                     </div>
                 </div>
@@ -340,9 +249,14 @@
 				              </div>
                         </div>
                         
-                        <div class="dropdown col-sm-3">
+                        <div class="dropdown col-sm-3 area-search-div">
                         	<div class="form-group md-1">
                         		<button type="button" id="area-search" class="form-control btn-primary" value="${root}">검색</button>
+                        	</div>
+                        </div>
+                        <div class="dropdown col-sm-3 commercial-search-div" style="display: none;">
+                        	<div class="form-group md-1">
+                        		<button type="button" id="commercial-search" class="form-control btn-primary" value="${root}">상권 검색</button>
                         	</div>
                         </div>
                     </div>
@@ -358,10 +272,45 @@
                       
                 </div>
                 <!-- 구글 지도  -->
-                <div class="mt-3" style="height :500px">
+                <!-- <div class="mt-3" style="height :500px">
                     <div id="map"></div>
                  
-                </div>
+                </div> -->
+                
+                
+                <!-- kakao map start -->
+            <div class="map_wrap">
+                <div id="map" style="width:100%;height:500px;"></div>
+                <ul id="category">
+                    <li id="BK9" data-order="0"> 
+                        <span class="category_bg bank"></span>
+                      은행
+                    </li>       
+                    <li id="MT1" data-order="1"> 
+                        <span class="category_bg mart"></span>
+                     마트
+                    </li>  
+                    <li id="PM9" data-order="2"> 
+                        <span class="category_bg pharmacy"></span>
+                     약국
+                    </li>  
+                    <li id="OL7" data-order="3"> 
+                        <span class="category_bg oil"></span>
+                     주유소
+                    </li>  
+                    <li id="CE7" data-order="4"> 
+                        <span class="category_bg cafe"></span>
+                     카페
+                    </li>  
+                    <li id="CS2" data-order="5"> 
+                        <span class="category_bg store"></span>
+                     편의점
+                    </li>      
+                </ul>
+            </div>
+            <!-- kakao map end -->
+                
+                
 
                 <div class = "row mt-5">
                     <h3 class="text-secondary ml-3 mr-auto" id ="current-area"> </h3>
@@ -404,6 +353,9 @@
    <!-- 모달 -->
    	<%@include file="/WEB-INF/views/modal.jsp" %>
 </body>
+   <!-- kakao map - commercial js -->
+   <script type="text/javascript" src='js/commercial.js'></script>
+
 </html>
 
 

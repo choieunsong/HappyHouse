@@ -22,7 +22,10 @@
 <link href="${root }/favoritejs/js/app.js" rel="preload" as="script">
 <link href="${root }/favoritejs/js/chunk-vendors.js" rel="preload" as="script">
 <link href="${root }/favoritejs/css/app.css" rel="stylesheet">
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp" %>

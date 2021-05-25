@@ -39,7 +39,7 @@ $(document).ready(function() {
     <%@ include file="/WEB-INF/views/header.jsp" %>
     
      <!-- 중앙 Contents Start  -->
-    <div class="container pt-5" style="margin-top:300px">
+    <div class="container pt-5" style="margin-top:80px">
      <h3 class="font-weight-bold text-center">비밀번호를 입력하세요</h3>
 
 	 <br><br>

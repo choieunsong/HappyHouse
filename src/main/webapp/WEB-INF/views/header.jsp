@@ -86,7 +86,7 @@
 	  
 	</nav>
 	
-    <div class="jumbotron text-center fixed-top" style="margin-bottom:0; margin-top:100px" id="maintitle">
+    <div class="jumbotron text-center" style="margin-bottom:0; margin-top:100px" id="maintitle">
   		<h1>CHOICHOI HOUSE</h1>
   		<h4>초이초이하우스에서 나만의 집을 초이스해보세요</h4> 
 	</div>

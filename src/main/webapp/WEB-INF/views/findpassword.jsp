@@ -48,7 +48,7 @@
 	</div> --%>
 
 
-	<div class="col-xs-5 col-lg-4 d-flex" style="margin-top: 350px">
+	<div class="col-xs-5 col-lg-4 d-flex" style="margin-top: 100px">
 		<div class="d-flex col-lg-12">
 			<div class="my-auto mx-auto">
 				<h2 class="text-center">비밀번호 찾기 결과</h2>

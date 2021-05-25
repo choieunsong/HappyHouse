@@ -189,7 +189,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-<div class="container" align="center" style="margin-top:400px">
+<div class="container" align="center" style="margin-top:100px">
 	<h2>CHOICHOI HOUSE 회원 목록</h2>
 	<div align="right"><button type="button" class="modiBtn btn btn-outline-info" data-toggle="modal" data-target="#userRegModal">등록</button></div>
   	<table class="table table-hover">

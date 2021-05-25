@@ -35,7 +35,7 @@
 	
 	<!-- 상단 Header Start  -->
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	<div  style="margin-top:350px"></div>
+	<div  style="margin-top:100px"></div>
 	<div id="app"></div>
 	<script src="${root }/vuejs/js/chunk-vendors.js"></script>
 	<script src="${root }/vuejs/js/app.js"></script>

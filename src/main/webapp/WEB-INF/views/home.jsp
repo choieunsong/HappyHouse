@@ -38,7 +38,7 @@
 
     
 	<!-- 중앙 Contents Start  -->
-	<div style="margin-top:300px">
+	<div style="margin-top:80px">
 	<div class="jumbotron text-center mb-4" style="margin-bottom:0; height: 400px; background-image:url(img/house_main.jpg); background-size:100%; background-position: center center"></div>
 	
     <div class="container text-center pt-5 " style="margin-top:10px; height:360px; display: none;">

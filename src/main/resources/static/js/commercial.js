@@ -270,10 +270,10 @@ function addressMark(coronaList, hospitalName){
 		            map: map,
 		            position: coords
 		        });
-		
+//		        console.log(hospitalName[idx]);
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new kakao.maps.InfoWindow({
-		            //content: '<div style="width:150px;text-align:center;padding:6px 0;">hospitalName[idx]</div>';
+		            //content: '<div style="width:150px;text-align:center;padding:6px 0;">'+hospitalName[idx]+'</div>'
 		            content: '<div style="width:150px;text-align:center;padding:6px 0;">🚑코로나 선별소🚑</div>'
 		        });
 		        infowindow.open(map, marker);

@@ -36,7 +36,7 @@
     <!-- 상단 Header End  -->
 
     <!-- 중앙 Contents Start  -->
-    <div class="jumbotron text-center" style="margin-bottom:0" id="maintitle">
+    <div class="jumbotron text-center" style="margin-bottom:0; margin-top:80px" id="maintitle">
   		<h1>CHOICHOI HOUSE</h1>
   		<h4>초이초이하우스에서 나만의 집을 초이스해보세요</h4> 
 	</div>

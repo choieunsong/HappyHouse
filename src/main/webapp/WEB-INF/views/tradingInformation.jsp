@@ -163,8 +163,8 @@
 </head>
 <body>
     <%@ include file="/WEB-INF/views/header.jsp" %>
-    
-    <div class = "container mt-5">
+   <!--  <div class="jumbotron text-center" style="margin-bottom:0; margin-top:80px" id="maintitle"> -->
+    <div style="margin-top:150px">
         <div class = "container">
             <h2 id='deal-title'>거래 정보</h2>
             <!-- 거래 정보  -->

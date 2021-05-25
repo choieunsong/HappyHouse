@@ -78,7 +78,7 @@ $(document).ready(function() {
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 
 	<!-- 중앙 Contents Start  -->
-	<div class="container pt-5" style="margin-top: 10px;">
+	<div class="container pt-5" style="margin-top: 100px;">
 		<h3 class="font-weight-bold text-center">마이 페이지</h3>
 		<div class="float-left" style="font-size: 16pt">정보 수정</div>
 		<br>

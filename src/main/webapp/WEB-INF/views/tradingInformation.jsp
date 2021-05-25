@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/api.css" />
-
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -163,8 +166,7 @@
 </head>
 <body>
     <%@ include file="/WEB-INF/views/header.jsp" %>
-    
-    <div class = "container mt-5">
+    <div style="margin-top:100px">
         <div class = "container">
             <h2 id='deal-title'>거래 정보</h2>
             <!-- 거래 정보  -->
@@ -322,6 +324,9 @@
                 </table>
                 
             	<table class="table table-hover mt-2" name="navi" id="navi" style="margin-left: auto; margin-right: auto;">
+              		<tr>
+              			<td style="text-align: center;"></td>
+              		</tr>
               		
              	</table> 
              	

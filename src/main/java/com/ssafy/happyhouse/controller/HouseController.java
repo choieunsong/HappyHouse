@@ -72,7 +72,7 @@ public class HouseController{
 		System.out.println(">>>>>>>>>>>>>>> 동네 이름: "+dong);
 		System.out.println(">>>>>>>>>>>>>>> pageNo: "+pageNo);
 		List<HouseDealDto> list = houseDealService.searchHouse(dong, pageNo);
-		
+		// System.out.println("list:"+list); // list:[HouseDealDto [no=19542, dong=공릉동, AptName=풍림아파트B, code=null, dealAmount=    23,000, buildYear=2001, dealYear=2019, dealMonth=1, dealDay=4, area=31.32,
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("key","dong");
 		map.put("word", dong);
@@ -84,6 +84,7 @@ public class HouseController{
 			result.put("result", list);
 			result.put("navi", pageNavigation.getNavigator());
 			model.addAttribute("aptList", list);
+			//System.out.println("result확인"+result);
 			return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
 		}else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);

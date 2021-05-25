@@ -283,7 +283,8 @@ function searchResult(data){
 			
 			aptList.push(apt);
 		});
-				
+		
+		console.log(data.navi);
 		// 네비 처리 
 		$('#navi tr td').empty();
 		$('#navi tr td').append(data.navi);

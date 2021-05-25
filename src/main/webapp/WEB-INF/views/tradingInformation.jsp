@@ -27,115 +27,7 @@
     <script type="text/javascript" src='${root }/js/home.js'></script>
     <script type="text/javascript" src='${root }/js/popper.min.js'></script>
     
-    <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQNYJGXUNDcJDpAZUWg8MV4nh27G5S5hM&callback=initMap&libraries=&v=weekly"></script> -->
-    
-    
     <script>
-
-   /*  var locations =[];
-    var searchFlag = false;
-    <c:choose>
-    	<c:when  test='${!empty houses}'>
-    		
-    	</c:when>
-    	<c:otherwise>
-    		locations = [
-    			  	['도봉구'	,	37.6658609	,	127.0317674	],
-    				 ['은평구'	,	37.6176125	,	126.9227004	],
-    				 ['동대문구'	,	37.5838012	,	127.0507003	],
-    				 ['동작구'	,	37.4965037	,	126.9443073	],
-    				 ['금천구'	,	37.4600969	,	126.9001546	],
-    				 ['구로구'	,	37.4954856	,	126.858121	],
-    				 ['종로구'	,	37.5990998	,	126.9861493	],
-    				 ['강북구'	,	37.6469954	,	127.0147158	],
-    				 ['중랑구'	,	37.5953795	,	127.0939669	],
-    				 ['강남구'	,	37.4959854	,	127.0664091	],
-    				 ['강서구'	,	37.5657617	,	126.8226561	],
-    				 ['중구'	,	37.5579452	,	126.9941904	],
-    				 ['강동구'	,	37.5492077	,	127.1464824	],
-    				 ['광진구'	,	37.5481445	,	127.0857528	],
-    				 ['마포구'	,	37.5622906	,	126.9087803	],
-    				 ['서초구'	,	37.4769528	,	127.0378103	],
-    				 ['성북구'	,	37.606991	,	127.0232185	],
-    				 ['노원구'	,	37.655264	,	127.0771201	],
-    				 ['송파구'	,	37.5048534	,	127.1144822	],
-    				 ['서대문구'	,	37.5820369	,	126.9356665	],
-    				 ['양천구'	,	37.5270616	,	126.8561534	],
-    				 ['영등포구'	,	37.520641	,	126.9139242	],
-    				 ['관악구'	,	37.4653993	,	126.9438071	],
-    				 ['성동구'	,	37.5506753	,	127.0409622	],
-    				 ['용산구'	,	37.5311008	,	126.9810742	]
-    		 ];
-    	</c:otherwise>
-    </c:choose>
-    
-    <c:choose>
- 		<c:when test='${!empty mainAttent}'>
-				var lat = ${mainAttent.lat}
-				var lng = ${mainAttent.lng}
-				var zoom = 11
-		</c:when>
-		<c:otherwise>
-			var lat = 37.606991
-			var lng = 127.0232185
-			var zoom = 11
-		</c:otherwise>
-	</c:choose>
-
-    	var map = null;
-    	var latitude;
-    	var longitude;
-
-        function initMap() {
-        	var opt = {
-					// google map에 중앙으로 표시할 좌표 설정
-					center : {lat:lat,lng: lng},
-					zoom : zoom,  //0~ 21  큰 값일 수록  zooming
-					};
-            map = new google.maps.Map(document.getElementById("map"), opt);
-            var infowindow = new google.maps.InfoWindow();
-
-		    var marker, i;
-		    console.log("----------------initmap");
-		    console.log(locations);
-		    console.log("len: "+locations.length);
-		    for (i = 0; i < locations.length; i++) { 
-			   marker = new google.maps.Marker({
-			      id:i,
-			      title : locations[i][0],
-			      label : locations[i][0],
-			      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-			      map: map
-			   });		    	
-		      
-		      if(marker && searchFlag) {
-			        marker.addListener('click', function() {
-			      	  	let i = this.id;
-			      	  	
-			      	  	// 거래 상세 정보 모달창 띄우기 
-			      	  	$('#aptInfoModal #modal-aptNo').text(locations[i][4]);
-			      	  	$('#aptInfoModal #aptName').text(locations[i][3]);
-						let address = locations[i][7]+" "+locations[i][13]+" "+locations[i][0]+" "+locations[i][14] +"번지";
-						$('#aptInfoModal #address').text(address);
-						$('#aptInfoModal #area').text(locations[i][5]);
-						$('#aptInfoModal #dealAmount').text(locations[i][8]);
-						let dealDate = locations[i][11]+"."+locations[i][10]+"."+locations[i][9];
-						$('#aptInfoModal #dealDate').text(dealDate);
-						$('#aptInfoModal #floor').text(locations[i][12]+"층");
-						$('#aptInfoModal #buildYear').text(locations[i][6]+"년");
-						
-						$('#aptInfoModal').modal('show');
-			       	 });
-				
-			        marker.addListener('dblclick', function(){
-			        	 map.setZoom(15);
-			        	 map.panTo(this.getPosition());
-			        }); 
-		       }
-		    }
-		} */
- 
-		
         function myRegion() {
         	alert("준비중입니다!");
         }
@@ -259,53 +151,55 @@
                         	</div>
                         </div>
                     </div>
-                </div>
+               <!--  </div> -->
 
-                <div class="apt-view mt-2" style="display: none;">
-
-                    <div class = "row" style="margin: 0 0 20px auto;">
-                        <input type="text" class="form-control col-sm-9 pd-2" placeholder="아파트명 검색" id="apt-input">
-                        <button type="button" class="btn btn-primary btn-block col-sm-3 " id="apt-search">검색</button>
-                    </div>
-                </div>
-                
-                
-                <!-- 구글 지도  -->
-               <!--  <div class="mt-3" style="height :500px">
-                    <div id="map"></div>
-                 
-                </div> -->
-                <!-- 카카오 -->
-                <div class="map_wrap">
-				    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-				    <ul id="category">
-				        <li id="BK9" data-order="0"> 
-				            <span class="category_bg bank"></span>
-				            은행
-				        </li>       
-				        <li id="MT1" data-order="1"> 
-				            <span class="category_bg mart"></span>
-				            마트
-				        </li>  
-				        <li id="PM9" data-order="2"> 
-				            <span class="category_bg pharmacy"></span>
-				            약국
-				        </li>  
-				        <li id="OL7" data-order="3"> 
-				            <span class="category_bg oil"></span>
-				            주유소
-				        </li>  
-				        <li id="CE7" data-order="4"> 
-				            <span class="category_bg cafe"></span>
-				            카페
-				        </li>  
-				        <li id="CS2" data-order="5"> 
-				            <span class="category_bg store"></span>
-				            편의점
-				        </li>      
-				    </ul>
-				</div>
-
+		                <div class="apt-view mt-2" style="display: none;">
+		
+		                    <div class = "row" style="margin: 0 0 20px auto;">
+		                        <input type="text" class="form-control col-sm-9 pd-2" placeholder="아파트명 검색" id="apt-input">
+		                        <button type="button" class="btn btn-primary btn-block col-sm-3 " id="apt-search">검색</button>
+		                    </div>
+		                </div>
+		                
+		                
+		                <!-- 카카오 -->
+		                <div class="map_wrap">
+						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    <ul id="category">
+						        <li id="BK9" data-order="0"> 
+						            <span class="category_bg bank"></span>
+						            은행
+						        </li>       
+						        <li id="MT1" data-order="1"> 
+						            <span class="category_bg mart"></span>
+						            마트
+						        </li>  
+						        <li id="PM9" data-order="2"> 
+						            <span class="category_bg pharmacy"></span>
+						            약국
+						        </li>  
+						        <li id="OL7" data-order="3"> 
+						            <span class="category_bg oil"></span>
+						            주유소
+						        </li>  
+						        <li id="CE7" data-order="4"> 
+						            <span class="category_bg cafe"></span>
+						            카페
+						        </li>  
+						        <li id="CS2" data-order="5"> 
+						            <span class="category_bg store"></span>
+						            편의점
+						        </li>      
+						    </ul>
+						</div>
+						
+						<div  class = "mt-3 d-flex" style="align-right">
+							<button type="button" class="btn btn-primary btn-block col-sm-3 ml-auto" id="corona-search" value="${root}">코로나 선별소 확인하기</button>
+						</div>
+				
+					<!-- </div> -->
+               </div>
+               
                 <div class = "row mt-5">
                     <h3 class="text-secondary ml-3 mr-auto" id ="current-area"> </h3>
                     <button type="button" class="btn btn-primary" id = "area-add" style="display: none;">관심 지역 추가</button> 
@@ -345,7 +239,7 @@
     
    <!-- 모달 -->
    	<%@include file="/WEB-INF/views/modal.jsp" %>
-   	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services"></script>
+   	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services,clusterer,drawing"></script>
    	<script type="text/javascript" src='${root }/js/commercial.js'></script>
 </body>
 </html>

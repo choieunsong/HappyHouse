@@ -83,6 +83,13 @@ $(function(){
 		console.log("aptName: " + aptName);
 		searchByApt(aptName, 1);
 	});
+	
+	// 코로나 선별소 검색
+	$('#corona-search').on('click', function() {
+		var dong = $('#dong').val();
+		console.log('동으로 코로나 검색: ' + dong);
+		searchCorona(dong, 1);
+	});
 
 	$('#area-add').on('click', function(){
 		alert("준비중입니다 !");
@@ -164,6 +171,33 @@ function searchByDong(dong, pg){
 	});
 }
 
+function searchCorona(dong, pg){
+	$.ajax({
+		 url: 'deal/corona/' + dong +"/"+pg,
+		 type: 'GET',
+		 contentType: 'application/json;charset=utf-8',
+		 dataType:'json',
+		 success : function(jsondata){
+			 //console.log("리졸투.."+jsondata.result);
+			 makeList(jsondata);
+			 //setLocation(jsondata.result);
+			 addressMark(coronaList, hospitalName);
+		 },
+		 error: function(xhr, status, err){
+			console.log(err);
+		}
+	});
+}
+
+var hospitalName=[], coronaList = []
+function makeList(data){
+	$(data.result).each(function(index, corona){
+		console.log(corona.hospital);
+		 coronaList.push(corona.address);
+		 hospitalName.push(corona.hospital);
+	})
+}
+
 function searchByApt(aptName, pg){
 	if(aptName == ""){
 		alert("아파트 이름 입력!!!!");
@@ -218,7 +252,7 @@ function searchResult(data){
 		setLocation(data.result);
 		
 		// 바디 처리 
-		console.log(data.result);
+		console.log("바디처리"+data.result);
 		aptList = [];
 		$(data.result).each(function(index, apt){
 			let str = `
@@ -261,6 +295,7 @@ function setLocation(data){
 	
 	setCenter(data[0].lat, data[0].lng);
 	addSearchPosToMap();
+	
 	console.log(positions);
 	//initMap();
 }

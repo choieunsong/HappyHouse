@@ -36,4 +36,22 @@ public class HomeController {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite");
 		return "favoriteLocation";
 	}
+	
+	@GetMapping("/favorite")
+	public String goFav() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite page");
+		return "favoriteLocation";
+	}
+	
+	@GetMapping("/favorite/list")
+	public String goFavList() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite list page");
+		return "favoriteLocation";
+	}
+	
+	@GetMapping("/favorite/detail")
+	public String goFavDetail() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite detail page");
+		return "favoriteLocation";
+	}
 }

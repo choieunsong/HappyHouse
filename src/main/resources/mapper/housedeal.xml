@@ -29,6 +29,16 @@
 		limit	#{start}, #{spp}
 	</select>
 	
+	<!-- 코로나 찾기 -->
+	<select id="searchCorona" parameterType="map" resultType="CoronaDto">
+		select 	*
+		from	corona c 
+		left 	outer join baseaddress b
+		on		c.sigungu = b.gugun
+		where	b.dong = #{dong}
+		limit	#{start}, #{spp}
+	</select>
+	
 	<resultMap type="baseAddress" id="ba">
 		<result 	property="gugun"	column="gugun"/>
 		<result		property="dongcode"	column="dongcode"/>

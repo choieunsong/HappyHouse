@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="${root}/css/bootstrap.css" />
 <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${root}/css/main.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -78,7 +82,7 @@ $(document).ready(function() {
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 
 	<!-- 중앙 Contents Start  -->
-	<div class="container pt-5" style="margin-top: 100px;">
+	<div class="container pt-5" style="margin-top: 300px;">
 		<h3 class="font-weight-bold text-center">마이 페이지</h3>
 		<div class="float-left" style="font-size: 16pt">정보 수정</div>
 		<br>

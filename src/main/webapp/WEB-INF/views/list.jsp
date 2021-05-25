@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <c:if test="${userinfo == null}">
 	<c:redirect url="/"/>
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${root}/css/main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
   	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -188,7 +189,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header.jsp" %>
-<div class="container" align="center">
+<div class="container" align="center" style="margin-top:400px">
 	<h2>CHOICHOI HOUSE 회원 목록</h2>
 	<div align="right"><button type="button" class="modiBtn btn btn-outline-info" data-toggle="modal" data-target="#userRegModal">등록</button></div>
   	<table class="table table-hover">

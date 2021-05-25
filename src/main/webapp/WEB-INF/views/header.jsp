@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 	<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
 	  <!-- Brand/logo -->
 	  <a class="navbar-brand" href="${root}">
@@ -82,7 +83,11 @@
 	       	</c:choose>
 		</ul>
 	  </div>
+	  
 	</nav>
-
-    
+	
+    <div class="jumbotron text-center fixed-top" style="margin-bottom:0; margin-top:100px" id="maintitle">
+  		<h1>CHOICHOI HOUSE</h1>
+  		<h4>초이초이하우스에서 나만의 집을 초이스해보세요</h4> 
+	</div>
     

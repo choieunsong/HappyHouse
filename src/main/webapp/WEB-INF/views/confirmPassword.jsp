@@ -8,9 +8,13 @@
 <meta charset="UTF-8" />
     <title>CHOICHOI HOUSE MyPage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="${root}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${root}/css/main.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -35,7 +39,7 @@ $(document).ready(function() {
     <%@ include file="/WEB-INF/views/header.jsp" %>
     
      <!-- 중앙 Contents Start  -->
-    <div class="container pt-5" style="margin-top:100px">
+    <div class="container pt-5" style="margin-top:300px">
      <h3 class="font-weight-bold text-center">비밀번호를 입력하세요</h3>
 
 	 <br><br>

@@ -16,8 +16,9 @@
 	    <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
 	    <link rel="stylesheet" href="${root}/css/main.css" />
 	    <link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
-	  	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
+		<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
 	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -32,9 +33,9 @@
 	</head>
 	<body>
 	
-	<!— 상단 Header Start  —>
+	<!-- 상단 Header Start  -->
 	<%@ include file="/WEB-INF/views/header.jsp" %>
-	
+	<div  style="margin-top:350px"></div>
 	<div id="app"></div>
 	<script src="${root }/vuejs/js/chunk-vendors.js"></script>
 	<script src="${root }/vuejs/js/app.js"></script>

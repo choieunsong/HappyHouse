@@ -31,7 +31,7 @@ public class HomeController {
 		return "qna";
 	}
 	
-	@GetMapping("/favorite")
+	@GetMapping("/favoriteLocation")
 	public String favorite() {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite");
 		return "favoriteLocation";

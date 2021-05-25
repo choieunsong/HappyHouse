@@ -1,8 +1,12 @@
 
-var aptList = [];
-var favoriteList = [{no: 1, userno: 6, dealno: 37, AptName: '현대뜨레비앙', dong: '무악동'}];
+var aptList = [];		//아파트 정보 리스트 
+var favoriteList = [];	//관심지역 리스트
+var favIdx;				// 삭제할 관심지역 인덱스 
 
 $(function(){
+	//favoriteList에 값 넣어주기 
+	initFavoriteList();
+	
 	// tooltip
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()
@@ -93,10 +97,10 @@ $(function(){
 		
 		let aptNo = $(this).find("td").first().text().trim();
 		
-		var idx = 0;
+		let idx;
 		for(let i = 0; i < aptList.length; i++){
 			if(aptList[i].no == aptNo) {
-				$('#aptInfoModal #modal-aptNo').text(aptList[i].aptNo);
+				$('#modal-aptNo').text(aptList[i].no);
 				$('#aptInfoModal #aptName').text(aptList[i].aptName);
 				let address = `${aptList[i].city} ${aptList[i].gugun} ${aptList[i].dong} ${aptList[i].jibun}번지`;
 				$('#aptInfoModal #address').text(address);
@@ -110,42 +114,85 @@ $(function(){
 				break;
 			}
 		}
+		console.log('idx: '+idx);
 		// 하트이모티콘 색깔 설정 
 		let flag = false;
 		for(let i = 0; i < favoriteList.length; i++){
 			console.log(favoriteList[i].dealno);
 			if(favoriteList[i].dealno == aptList[idx].no){
 				console.log('yes');
-				$('#aptInfoModal #isFavorite').text(1);
 				$('#aptInfoModal .favorite').css("display","");
 				$('#aptInfoModal .not-favorite').css("display","none");
+				favIdx = i;
 				flag = true;
 				break;
 			}
 		}
 		if(!flag){
-			$('#aptInfoModal #isFavorite').text(1);
 			$('#aptInfoModal .favorite').css("display","none");
 			$('#aptInfoModal .not-favorite').css("display","");
 		}
 		$('#aptInfoModal').modal('show');
 	});
-	
-	//관심지역 추가 
-	$('#favorite-icon').on('click', function(){
-		console.log('modal favorite click');
-		let flag = $('#aptInfoModal #isFavorite').text();
-		// 관심지역에 추가 
-		if(flag =='0'){
-			console.log("관심지역 추가");
-		}
-		// 관심지역에 제거 
-		else{
-			console.log("관심지역 제거");
-		}
-	})
 });
 
+
+//관심지역 추가  
+function addFavorite(){
+	console.log("관심지역 추가");
+	let arr2 = $('#aptInfoModal #address').text().split(" "),
+		address = arr2[2],
+		dealno = $('#aptInfoModal #modal-aptNo').text() * 1,
+		aptName = $('#aptInfoModal #aptName').text();
+		
+	let data = {no:0, userno: 0, dealno: dealno, aptName: aptName, dong: address};
+	console.log(data);
+	$.ajax({
+		 url: 'favorite',
+		 type: 'POST',
+		 contentType: 'application/json;charset=utf-8',
+		 dataType:'json',
+		 data: JSON.stringify(data),
+		 success : function(jsondata){
+			 if(jsondata =='success'){
+				 console.log('추가 잘됨');
+			 }else{
+				 alert('관심 지역 추가하는데 오류가 발생했습니다.');
+			 }
+		 },
+		 error: function(xhr, status, err){
+				console.log(err);
+		}
+	});
+	favoriteList.push(data);
+	setHeartIcon(dealno, true);
+}
+
+
+//관심지역 제거  
+function removeFavorite(){
+	console.log("관심지역 제거");
+	let no = favoriteList[favIdx].no;
+	console.log(no);
+	
+	$.ajax({
+		 url: 'favorite/' + no,
+		 type: 'DELETE',
+		 contentType: 'application/json;charset=utf-8',
+		 dataType:'json',
+		 success : function(jsondata){
+			 if(jsondata =='success'){
+				 console.log("제거 잘됨");
+			 }else{
+				 alert('관심 지역 제거하는 데 오류가 발생햇습니다.');
+			 }
+		 },
+		 error: function(xhr, status, err){
+				console.log(err);
+		}
+	});
+	initFavoriteList();
+}
 
 //////////////////////////////////////////////
 
@@ -231,15 +278,50 @@ function searchResult(data){
 				<td>${apt.floor}</td>
 				<td>${apt.dealYear}.${apt.dealMonth}.${apt.dealDay} </td>
 			</tr>`
-//			console.log(str);
+			
 			$('#table-body').append(str);
 			
 			aptList.push(apt);
 		});
+				
 		// 네비 처리 
 		$('#navi tr td').empty();
-//		console.log(data.navi);
 		$('#navi tr td').append(data.navi);
+		
+		//하트 아이콘 설정 
+		console.log(aptList);
+		for(var i = 0; i < aptList.length; i++)
+			setHeartIcon(aptList[i].no, true);
+	}
+}
+
+//row 옆에 하트 추가하기 
+function setHeartIcon(aptNo, map, str){
+	console.log("aptNo: "+aptNo+", map: "+map);
+	for(var i = 0; i < favoriteList.length; i++){
+		// map이 true면 하트붙여주기 
+		if(favoriteList[i].dealno == aptNo){
+			console.log('dealno: '+favoriteList[i].dealno)
+			if(map){
+				let idx = findAptIdx(aptNo);
+				console.log('idx: 추가 '+idx);
+				
+//				$('#navi')  '<i class="far fa-heart heart-icon"></i>';
+			}else{
+				console.log('제거 '+i);
+//				$('#navi').children().eq(i+1).remove('<i class="far fa-heart heart-icon"></i>')
+			}
+			break;
+		}
+	}
+}
+
+function findAptIdx(aptNo){
+	for(var i = 0; i < aptList.length; i++){
+		if(aptList[i].no == aptNo){
+			console.log('i: '+i);
+			return i;
+		}
 	}
 }
 
@@ -247,21 +329,47 @@ function searchResult(data){
 function setLocation(data){
 	searchFlag = true;
 	
+	// 기존 마커 지워주기 
 	console.log("setLocation");
-	locations = [];
+	positions = [];
+	removeSearchMarkers();
+	searchMarkders = [];
+	
+	// 새 마커 찍기 
 	$(data).each(function(index, apt){
-//		locations.push([apt.dong, apt.lat, apt.lng, apt.aptName,apt.no, apt.area, apt.buildYear, apt.city, apt.dealAmount, 
-//			apt.dealDay, apt.dealMonth, apt.dealYear, apt.floor, apt.gugun, apt.jibun]);
 		
 		positions.push({
 			content:  `<div>${apt.aptName}</div>`,
 			latlng: new kakao.maps.LatLng(apt.lat, apt.lng)
 		});
 	});
-	
-	setCenter(data[0].lat, data[0].lng);
 	addSearchPosToMap();
-	console.log(positions);
-	//initMap();
+	
+	// 중앙, level 설정 
+	setCenter(data[0].lat, data[0].lng);
+	map.setLevel(8);
+}
+
+//유저가 갖고 있는 favorite list 값 가져오기
+function initFavoriteList(){
+	favoriteList = [];
+	$.ajax({
+		 url: 'favorite',
+		 type: 'GET',
+		 contentType: 'application/json;charset=utf-8',
+		 dataType:'json',
+		 success : function(data){
+			 console.log('가져오기 잘됨');
+			 $(data).each(function(index, item){
+				 console.log(item);
+				 favoriteList.push(item);
+			 });
+			 console.log(favoriteList);
+		 },
+		 error: function(xhr, status, err){
+				console.log(err);
+		}
+	});
+	
 }
 

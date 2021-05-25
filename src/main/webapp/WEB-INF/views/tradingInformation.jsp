@@ -267,12 +267,6 @@
                     </div>
                 </div>
                 
-                
-                <!-- 구글 지도  -->
-               <!--  <div class="mt-3" style="height :500px">
-                    <div id="map"></div>
-                 
-                </div> -->
                 <!-- 카카오 -->
                 <div class="map_wrap">
 				    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -328,9 +322,7 @@
                 </table>
                 
             	<table class="table table-hover mt-2" name="navi" id="navi" style="margin-left: auto; margin-right: auto;">
-              		<tr>
-              			<td style="text-align: center;"></td>
-              		</tr>
+              		
              	</table> 
              	
             </div>

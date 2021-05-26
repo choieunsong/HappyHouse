@@ -23,7 +23,7 @@ public class SwaggerConfig {
 				.apiInfo(apiInfo())
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.ssafy.happyhouse.controller"))
-				.paths(PathSelectors.ant("/favorite/**"))
+				.paths(PathSelectors.ant("/notice/**"))
 				.build();
 	}
 

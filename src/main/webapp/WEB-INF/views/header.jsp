@@ -22,7 +22,7 @@
 	      </li>
 	      </c:if>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#" onclick="myRegion()"><h6>공지사항</h6></a>
+	        <a class="nav-link" href="${root}/notice"><h6>공지사항</h6></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="${root}/qna"><h6>자유게시판</h6></a>
@@ -32,7 +32,7 @@
 	        <div class="dropdown-menu">
 	          <a class="dropdown-item" href="${root }/tradingIngormation"><h6>거래정보 검색</h6></a>
 	          <a class="dropdown-item" href="${root}/favoriteLocation"><h6>관심지역 정보</h6></a>
-	          <a class="dropdown-item" href="#" onclick="myRegion()"><h6>공지사항</h6></a>
+	          <a class="dropdown-item" href="${root}/notice"><h6>공지사항</h6></a>
 	          <a class="dropdown-item" href="${root}/qna"><h6>자유게시판</h6></a>
 	        	<div class="dropdown-divider"></div>
 	          

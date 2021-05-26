@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Home from "@/components/Home.vue";
 import Favorite from "@/components/Favorite.vue";
 import List from "@/components/List.vue";
 import Detail from "@/components/Detail.vue";
@@ -8,7 +9,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/happyhouse/favoriteLocation",
+    path: "/happyhouse",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/happyhouse/favorite",
     name: "Favorite",
     component: Favorite,
   },

@@ -222,6 +222,7 @@
                         <th>전용면적</th>
                         <th>층수</th>
                         <th>거래일</th>
+                        <th>관심지역</th>
                       </tr>
                     </thead>
                     <tbody id="table-body">

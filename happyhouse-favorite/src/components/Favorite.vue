@@ -80,8 +80,8 @@ export default {
         }
     },
     created(){
+        //this.favoriteList();
         bus.$on('favoriteList',this.favoriteList);
-        this.favoriteList();
     },
     mounted(){
         // if (window.kakao && window.kakao.maps) {
@@ -98,12 +98,11 @@ export default {
     methods: {
         favoriteList(){
             let userinfo = this.getUserInfo;
-            let userno = userinfo.userno;
             console.log(userinfo);
-            console.log(userno);
+            console.log(userinfo.userno);
 
             axios.
-            get(`http://localhost:9090/happyhouse/favorite/${userno}`)
+            get(`http://localhost:9090/happyhouse/favorite/${userinfo.userno}`)
             .then(({data}) => {
                 console.log('favorite list');
                 console.log(data);

@@ -47,4 +47,10 @@ public class HomeController {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite detail page");
 		return "favoriteLocation";
 	}
+	
+	@GetMapping("/notice")
+	public String goNotice() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>favorite detail page");
+		return "notice";
+	}
 }

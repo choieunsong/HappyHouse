@@ -65,7 +65,7 @@
 		values (#{no}, #{bno}, #{writer}, #{content})
 	</insert>
 	
-	<!-- 댓글 수정 -->
+	
 	<update id="updateReply" parameterType="reply">
 		update vue_reply
 			set content = #{content}

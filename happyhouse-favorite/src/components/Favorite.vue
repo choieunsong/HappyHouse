@@ -13,7 +13,7 @@
         <div class="col-md-8">
             <div class="row">
                 <!-- 카카오 -->
-                <!-- <div class="map_wrap">
+                <div class="map_wrap">
                     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
                     <ul id="category">
                         <li id="BK9" data-order="0"> 
@@ -41,7 +41,7 @@
                             편의점
                         </li>      
                     </ul>
-				</div> -->
+				</div>
             </div>
             <detail></detail>
         </div>
@@ -84,16 +84,17 @@ export default {
         bus.$on('favoriteList',this.favoriteList);
     },
     mounted(){
-        // if (window.kakao && window.kakao.maps) {
-        //     this.initMap();
-        // } else {
-        //     const script = document.createElement('script');
-        //     /* global kakao */
-        //     script.onload = () => kakao.maps.load(this.initMap);
-        //     script.src = '"http://dapi.kakao.com/v2/maps/sdk.js?appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services"';
-        //     document.head.appendChild(script);
-        // }
-        // this.initMap();
+        if (window.kakao && window.kakao.maps) {
+            console.log(window.kakao);
+            this.initMap();
+        } else {
+            const script = document.createElement('script');
+            /* global kakao */
+            script.onload = () => kakao.maps.load(this.initMap);
+            script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services";
+            document.head.appendChild(script);
+            console.log(script);
+        }
     },
     methods: {
         favoriteList(){
@@ -125,16 +126,16 @@ export default {
                 alert("관심지역 목록 조회 중 오류 발생");
             })
         },
-        // initMap(){
-        //     var container = document.getElementById('map');
-        //     var options = {
-        //         center: new kakao.maps.LatLng(33.450701, 126.570667),
-        //         level: 3
-        //     };
+        initMap(){
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3
+            };
 
-        //     var map = new kakao.maps.Map(container, options);
-        //     map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
-        // }
+            var map = new kakao.maps.Map(container, options);
+            map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+        }
     },
 };
 </script>

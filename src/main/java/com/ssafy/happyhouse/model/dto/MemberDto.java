@@ -79,8 +79,8 @@ public class MemberDto{
 	@Override
 	public String toString() {
 		return "MemberDto [userno=" + userno + ", userid=" + userid + ", password=" + password + ", email=" + email
-				+ ", username=" + username + ", address=" + address + "]";
+				+ ", username=" + username + ", address=" + address + ", state=" + state + "]";
 	}
-	
+
 	
 }

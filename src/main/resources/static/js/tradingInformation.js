@@ -189,15 +189,6 @@ function setHeartIcon(aptNo){
 	}
 }
 
-function findAptIdx(aptNo){
-	for(var i = 0; i < aptList.length; i++){
-		if(aptList[i].no == aptNo){
-			console.log('i: '+i);
-			return i;
-		}
-	}
-}
-
 
 //관심지역 제거  
 function removeFavorite(){

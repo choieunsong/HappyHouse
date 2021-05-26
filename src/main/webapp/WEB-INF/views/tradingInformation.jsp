@@ -26,12 +26,6 @@
     <script type="text/javascript" src='${root }/js/tradingInformation.js'></script>
     <script type="text/javascript" src='${root }/js/home.js'></script>
     <script type="text/javascript" src='${root }/js/popper.min.js'></script>
-    
-    <script>
-        function myRegion() {
-           alert("준비중입니다!");
-        }
-    </script>
     <style>
         #map{
             height: 100%;

@@ -18,7 +18,7 @@
 	        <a class="nav-link" href="${root}/tradingInformation"><h6>거래정보 검색</h6></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="${root}/favorite"><h6>관심지역 정보</h6></a>
+	        <a class="nav-link" href="${root}/favoriteLocation"><h6>관심지역 정보</h6></a>
 	      </li>
 	      </c:if>
 	      <li class="nav-item">
@@ -31,7 +31,7 @@
 	        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" sytle="font-size:large;">사이트맵</a>
 	        <div class="dropdown-menu">
 	          <a class="dropdown-item" href="${root }/tradingIngormation"><h6>거래정보 검색</h6></a>
-	          <a class="dropdown-item" href="${root}/favorite"><h6>관심지역 정보</h6></a>
+	          <a class="dropdown-item" href="${root}/favoriteLocation"><h6>관심지역 정보</h6></a>
 	          <a class="dropdown-item" href="#" onclick="myRegion()"><h6>공지사항</h6></a>
 	          <a class="dropdown-item" href="${root}/qna"><h6>자유게시판</h6></a>
 	        	<div class="dropdown-divider"></div>

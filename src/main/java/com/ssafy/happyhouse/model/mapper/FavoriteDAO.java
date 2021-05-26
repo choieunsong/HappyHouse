@@ -8,7 +8,8 @@ import com.ssafy.happyhouse.model.dto.Favorite;
 
 @Mapper
 public interface FavoriteDAO {
-	public void addFavorite(Favorite fav);
-	public void removeFavorite(int no);
+	public int addFavorite(Favorite fav);
+	public int removeFavorite(int no);
 	public List<Favorite> getFavorite(int userno);
+	public List<Favorite> getFavoriteAptInfo(int userno);
 }

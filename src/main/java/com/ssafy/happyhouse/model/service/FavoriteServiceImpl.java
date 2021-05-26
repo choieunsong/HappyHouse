@@ -16,14 +16,14 @@ public class FavoriteServiceImpl implements FavoriteService {
 	
 	@Override
 	@Transactional
-	public void addFavorite(Favorite fav) {
-		dao.addFavorite(fav);
+	public boolean addFavorite(Favorite fav) {
+		return dao.addFavorite(fav) == 1;
 	}
 
 	@Override
 	@Transactional
-	public void removeFavorite(int no) {
-		dao.removeFavorite(no);
+	public boolean removeFavorite(int no) {
+		return dao.removeFavorite(no) == 1;
 	}
 
 	@Override
@@ -31,5 +31,10 @@ public class FavoriteServiceImpl implements FavoriteService {
 	public List<Favorite> getFavorite(int userno) {
 		return dao.getFavorite(userno);
 	}
-
+	
+	@Override
+	@Transactional
+	public List<Favorite> getFavoriteAptInfo(int userno){
+		return dao.getFavoriteAptInfo(userno);
+	}
 }

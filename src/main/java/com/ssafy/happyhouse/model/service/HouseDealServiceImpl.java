@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.dao.HouseDealDao;
 import com.ssafy.happyhouse.model.dto.BaseAddress;
+import com.ssafy.happyhouse.model.dto.CoronaDto;
 import com.ssafy.happyhouse.model.dto.HouseDealDto;
 import com.ssafy.happyhouse.util.PageNavigation;
 
@@ -17,6 +18,8 @@ public class HouseDealServiceImpl implements HouseDealService {
 
 	@Autowired
 	HouseDealDao houseDealDao;
+	@Autowired
+	HouseDealDao coronaDao;
 	private static final int spp = 10;
 	
 	@Override
@@ -31,6 +34,17 @@ public class HouseDealServiceImpl implements HouseDealService {
 		return houseDealDao.searchHouse(param);
 	}
 
+	@Override
+	public List<CoronaDto> searchCorona(String dong, String pageNo) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		int pg = Integer.parseInt(pageNo);
+		param.put("dong", dong);
+		param.put("start",(pg-1)*spp);
+		param.put("spp",spp);
+		return coronaDao.searchCorona(param);
+	}
+	
 	@Override
 	public List<BaseAddress> searchGu(String city){
 		return houseDealDao.searchGu(city);

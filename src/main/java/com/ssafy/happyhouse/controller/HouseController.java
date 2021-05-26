@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ssafy.happyhouse.model.dto.BaseAddress;
 import com.ssafy.happyhouse.model.dto.HouseDealDto;
+import com.ssafy.happyhouse.model.dto.CoronaDto;
 import com.ssafy.happyhouse.model.service.HouseDealService;
 import com.ssafy.happyhouse.util.PageNavigation;
 
@@ -85,6 +86,30 @@ public class HouseController{
 			result.put("navi", pageNavigation.getNavigator());
 			model.addAttribute("aptList", list);
 			//System.out.println("result확인"+result);
+			return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
+		}else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@ApiOperation("코로나 선별소 찾기")
+	@GetMapping("/corona/{dong}/{pageNo}")
+	public ResponseEntity<Map<String, Object>> searchCorona(@PathVariable("dong") String dong, @PathVariable("pageNo") String pageNo, Model model){
+		System.out.println(">>>>>>>>>>>>>>> 동네 이름: "+dong);
+		System.out.println(">>>>>>>>>>>>>>> pageNo: "+pageNo);
+		List<CoronaDto> coronalist = houseDealService.searchCorona(dong, pageNo);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("key","dong");
+		map.put("word", dong);
+		//map.put("pageNo", pageNo);
+		//PageNavigation pageNavigation = houseDealService.makePageNavigation(map);
+		
+		if(coronalist != null && !coronalist.isEmpty()) {
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("result", coronalist);
+			//result.put("navi", pageNavigation.getNavigator());
+			model.addAttribute("aptList", coronalist);
+			//System.out.println(result);
 			return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
 		}else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);

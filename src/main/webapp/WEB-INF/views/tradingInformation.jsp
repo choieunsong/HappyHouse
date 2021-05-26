@@ -27,11 +27,7 @@
     <script type="text/javascript" src='${root }/js/home.js'></script>
     <script type="text/javascript" src='${root }/js/popper.min.js'></script>
     
-    <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQNYJGXUNDcJDpAZUWg8MV4nh27G5S5hM&callback=initMap&libraries=&v=weekly"></script> -->
-    
-    
     <script>
-		
         function myRegion() {
         	alert("준비중입니다!");
         }
@@ -155,7 +151,7 @@
                         	</div>
                         </div>
                     </div>
-                </div>
+               <!--  </div> -->
 
                 <div class="apt-view mt-2" style="display: none;">
 
@@ -196,6 +192,53 @@
 				    </ul>
 				</div>
 
+		                <div class="apt-view mt-2" style="display: none;">
+		
+		                    <div class = "row" style="margin: 0 0 20px auto;">
+		                        <input type="text" class="form-control col-sm-9 pd-2" placeholder="아파트명 검색" id="apt-input">
+		                        <button type="button" class="btn btn-primary btn-block col-sm-3 " id="apt-search">검색</button>
+		                    </div>
+		                </div>
+		                
+		                
+		                <!-- 카카오 -->
+		                <div class="map_wrap">
+						    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+						    <ul id="category">
+						        <li id="BK9" data-order="0"> 
+						            <span class="category_bg bank"></span>
+						            은행
+						        </li>       
+						        <li id="MT1" data-order="1"> 
+						            <span class="category_bg mart"></span>
+						            마트
+						        </li>  
+						        <li id="PM9" data-order="2"> 
+						            <span class="category_bg pharmacy"></span>
+						            약국
+						        </li>  
+						        <li id="OL7" data-order="3"> 
+						            <span class="category_bg oil"></span>
+						            주유소
+						        </li>  
+						        <li id="CE7" data-order="4"> 
+						            <span class="category_bg cafe"></span>
+						            카페
+						        </li>  
+						        <li id="CS2" data-order="5"> 
+						            <span class="category_bg store"></span>
+						            편의점
+						        </li>      
+						    </ul>
+						</div>
+						
+						<div  class = "mt-3 d-flex" style="align-right">
+							<button type="button" class="btn btn-primary btn-block col-sm-3 ml-auto" id="corona-search" value="${root}">코로나 선별소 확인하기</button>
+						</div>
+				
+					<!-- </div> -->
+               </div>
+               
                 <div class = "row mt-5">
                     <h3 class="text-secondary ml-3 mr-auto" id ="current-area"> </h3>
                     <button type="button" class="btn btn-primary" id = "area-add" style="display: none;">관심 지역 추가</button> 
@@ -236,7 +279,7 @@
     
    <!-- 모달 -->
    	<%@include file="/WEB-INF/views/modal.jsp" %>
-   	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services"></script>
+   	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d2d848495108af4b2b93c70751c2ac3&libraries=services,clusterer,drawing"></script>
    	<script type="text/javascript" src='${root }/js/commercial.js'></script>
 </body>
 </html>

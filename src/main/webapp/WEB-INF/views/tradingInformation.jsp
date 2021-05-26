@@ -199,12 +199,6 @@
             </div>
 
             
-            <%-- <div  class = "mt-3 d-flex" style="align-right">
-               <button type="button" class="btn btn-primary btn-block col-sm-3 ml-auto" id="corona-search" value="${root}">코로나 선별소 확인하기</button>
-            </div> --%>
-            
-               <!-- </div>
-               </div>  -->
                
                 <div class = "row mt-5">
                     <h3 class="text-secondary ml-3 mr-auto" id ="current-area"> </h3>

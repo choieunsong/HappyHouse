@@ -2,7 +2,7 @@ const path = require("path");
 module.exports = {
   outputDir: path.resolve(
     __dirname,
-    "./src/main/resources/static/favoritejs"
+    "../src/main/resources/static/favoritejs"
   ),
   filenameHashing: false,
   configureWebpack: (config) => {

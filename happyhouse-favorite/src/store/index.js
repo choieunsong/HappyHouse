@@ -6,12 +6,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     userinfo: {
-      userno: 6,
-      userid: "song",
-      email: "song@naver.com",
-      username: "은송",
-      address: "수원시 권선구",
-      state: 0,
+      userno: 0,
+      userid: '',
+      username: '',
+      address: '',
+      email: '',
+      state: 0
     },
     deals: [],
   },
@@ -28,7 +28,16 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER_INFO(state, payload) {
-      state.userinfo = payload;
+      console.log("mutation: ");
+      console.log(payload);
+      state.userinfo.userno = payload.userno;
+      state.userinfo.userid = payload.userid;
+      state.userinfo.username = payload.username;
+      state.userinfo.address = payload.address;
+      state.userinfo.email = payload.email;
+      state.userinfo.state = payload.state;
+      console.log("mutation set user info: ");
+      console.log(state.userinfo);
     },
     SET_DEALS_INFO(state, payload) {
       console.log(payload);

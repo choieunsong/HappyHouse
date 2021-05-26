@@ -7,7 +7,7 @@ var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}),
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
 	 	center: new kakao.maps.LatLng(37.566826, 126.9786567), 
-        level: 5 // 지도의 확대 레벨
+        level: 6 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
@@ -255,7 +255,6 @@ function makeOutListener(infowindow) {
 var geocoder = new kakao.maps.services.Geocoder();
 
 function addressMark(coronaList, hospitalName){
-	
 	for(var idx=0; idx<coronaList.length; idx++){
 		// 주소로 좌표를 검색합니다
 		geocoder.addressSearch(coronaList[idx], function(result, status) {
@@ -270,11 +269,11 @@ function addressMark(coronaList, hospitalName){
 		            map: map,
 		            position: coords
 		        });
-//		        console.log(hospitalName[idx]);
+		        console.log("hospitalName[idx] 출력2 : "+hospitalName[idx]);
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new kakao.maps.InfoWindow({
 		            //content: '<div style="width:150px;text-align:center;padding:6px 0;">'+hospitalName[idx]+'</div>'
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">🚑코로나 선별소🚑</div>'
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">🚑코로나 선별진료소🚑</div>'
 		        });
 		        infowindow.open(map, marker);
 		
@@ -283,6 +282,4 @@ function addressMark(coronaList, hospitalName){
 		    } 
 		});
 	}
-	
-	   
 }

@@ -75,9 +75,6 @@
                             <input type="radio" class="form-check-input" id="radio-apt" name="optradio" value="apt">아파트별 검색
                         </label>
                     </div>
-                    <div  class = "form-check-inline float-right">
-                  <button type="button" class="form-control btn-primary" id="corona-search" value="${root}">📢 코로나 선별진료소 확인하기 </button>
-               </div>
                 </div>
 
                 <div class="dong-view mt-2">
@@ -146,21 +143,19 @@
                             </select>
                           </div>
                         </div>
-                        
-                        <div class="dropdown col-sm-3">
-                           <div class="form-group md-1">
+                        <!-- dropdown col-sm-3 -->
+                        <div class="col-sm-3 btn-group no-padding">
+                           <div class="form-group">
                               <button type="button" id="area-search" class="form-control btn-primary" value="${root}">검색</button>
                            </div>
+                           <div  class = "form-group">
+	                        <button type="button" class="form-control btn-outline-primary " id="corona-search" value="${root}">선별진료소</button>
+	                       </div>
                         </div>
-                           <%-- <div  class = "form-group md-1">
-                        <button type="button" class="form-control btn-primary" id="corona-search" value="${root}">코로나 선별소 확인하기</button>
-                     </div> --%>
-                        
                     </div>
                </div>
 
                 <div class="apt-view mt-2" style="display: none;">
-
                     <div class = "row" style="margin: 0 0 20px auto;">
                         <input type="text" class="form-control col-sm-9 pd-2" placeholder="아파트명 검색" id="apt-input">
                         <button type="button" class="btn btn-primary btn-block col-sm-3 " id="apt-search">검색</button>

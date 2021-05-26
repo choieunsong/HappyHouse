@@ -382,7 +382,7 @@ function setLocation(data){
 	
 	// 중앙, level 설정 
 	setCenter(data[0].lat, data[0].lng);
-	map.setLevel(8);
+	map.setLevel(7);
 }
 
 //유저가 갖고 있는 favorite list 값 가져오기

@@ -2,8 +2,8 @@ package com.ssafy.happyhouse.model.dto;
 
 public class HouseDealDto{
 	private int no;
-	private String dong;
 	private String AptName;
+	private String dong;
 	private String code;
 	private String dealAmount;
 	private String buildYear;

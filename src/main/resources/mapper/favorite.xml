@@ -12,7 +12,7 @@
 	
 	<!-- favorite 입력하기 -->
 	<insert id="addFavorite" parameterType="favorite">
-		insert into user_favorite(no, userno, dealno, AptName,dong)
+		insert into user_favorite(no, userno, dealno, aptName,dong)
 		values(#{no}, #{userno}, #{dealno}, #{aptName}, #{dong});
 	</insert>
 	
@@ -21,4 +21,21 @@
 		delete from user_favorite
 		where no = #{no};
 	</delete>
+	
+	
+	<!--  favorite 가져오기 -->
+	<select id="getFavoriteAptInfo" parameterType="int" resultType="favorite">
+		select 	f.no, f.userno, f.dealno, f.aptName, f.dong,  h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, i.lat, i.lng, i.buildYear
+		from 	(select no, userno, dealno, aptName, dong
+				from	user_favorite
+		        where	userno = #{userno}) f
+		join 	housedeal h
+		on		f.dealno = h.no
+		left	outer join	baseaddress b
+		on		h.dong = b.dong
+		right 	outer join houseinfo i
+		on		h.AptName = i.AptName and h.dong = i.dong
+		where	f.userno = #{userno};
+	</select>
+
 </mapper>

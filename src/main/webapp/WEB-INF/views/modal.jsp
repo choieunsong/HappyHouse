@@ -295,9 +295,8 @@
         	</tr>
 		</table>
 		<div class="text-right">
-			<p style="display:none" id="isFavorite"></p>
-			<i id="favorite-icon" class="fab fa-gratipay fa-3x favorite" data-toggle="tooltip" data-placement="top" title="관심지역 제거" style="display:none;"></i>
-			<i id="favorite-icon" class="fab fa-gratipay fa-3x not-favorite" data-toggle="tooltip" data-placement="top" title="관심지역 추기"></i>
+			<i id="favorite-icon" class="fab fa-gratipay fa-3x favorite" data-toggle="tooltip" data-placement="top" title="관심지역 제거" style="display:none;" onclick="removeFavorite()"></i>
+			<i id="favorite-icon" class="fab fa-gratipay fa-3x not-favorite" data-toggle="tooltip" data-placement="top" title="관심지역 추기" onclick="addFavorite()"></i>
 		</div>
       </div>
       <div class="modal-footer">

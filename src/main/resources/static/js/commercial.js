@@ -1,4 +1,114 @@
-// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+$(function(){
+	console.log('init pos');
+	addSearchPosToMap();
+});
+
+//마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+var positions = [
+	{
+		latlng: new kakao.maps.LatLng(37.6658609, 127.0317674),
+		content: '도봉구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.6176125, 126.9227004),
+		title: '은평구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5838012, 127.0507003),
+		title: '동대문구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.4965037, 126.9443073),
+		title: '동작구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.4600969, 126.9001546),
+		title: '금천구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.4954856, 126.858121),
+		title: '구로구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5990998, 126.9861493),
+		title: '종로구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.6469954, 127.0147158),
+		title: '강북구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5953795, 127.0939669),
+		title: '중랑구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.4959854, 127.0664091),
+		title: '강남구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5657617, 126.8226561),
+		title: '강서구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5579452, 126.9941904),
+		title: '중구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5492077, 127.1464824),
+		title: '강동구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5481445	,	127.0857528),
+		title: '광진구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5622906	,	126.9087803	),
+		title: '마포구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.4769528	,	127.0378103	),
+		title: '서초구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.606991	,	127.0232185	),
+		title: '성북구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.655264	,	127.0771201	),
+		title: '노원구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5048534	,	127.1144822	),
+		title: '송파구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5820369	,	126.9356665	),
+		title: '서대문구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5270616	,	126.8561534	),
+		title: '양천구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.520641	,	126.9139242	),
+		title: '영등포구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.4653993	,	126.9438071	),
+		title: '관악구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5506753	,	127.0409622	),
+		title: '성동구'
+	},
+	{
+		latlng: new kakao.maps.LatLng(37.5311008	,	126.9810742	),
+		title: '용산구'
+	}
+];
+
+
+// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다0
 var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
     markers = [], // 마커를 담을 배열입니다
@@ -6,8 +116,8 @@ var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}),
  
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-	 	center: new kakao.maps.LatLng(37.566826, 126.9786567), 
-        level: 6 // 지도의 확대 레벨
+	 	center: new kakao.maps.LatLng(37.5579452, 126.9941904), 
+        level: 9 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
@@ -191,25 +301,7 @@ function changeCategoryClass(el) {
 } 
 
 ///////////////////////////////////////
-//마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-var positions = [
-//    {
-//        content: '<div>카카오</div>', 
-//        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-//    },
-//    {
-//        content: '<div>생태연못</div>', 
-//        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-//    },
-//    {
-//        content: '<div>텃밭</div>', 
-//        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-//    },
-//    {
-//        content: '<div>근린공원</div>',
-//        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-//    }
-];
+var searchMarkers = [];
 
 function addSearchPosToMap(){
 	for(var i  = 0; i  < positions.length; i++){
@@ -220,7 +312,7 @@ function addSearchPosToMap(){
 		
 		// 마커에 표시할 인포윈도우를 생성합니다 
 	    var infowindow = new kakao.maps.InfoWindow({
-	        content: positions[i].content // 인포윈도우에 표시할 내용
+	        content: '<div class="label"><span class="center">' + positions[i].content + '</span> </div>'// 인포윈도우에 표시할 내용
 	    });
 	
 	    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
@@ -228,6 +320,16 @@ function addSearchPosToMap(){
 	    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 	    kakao.maps.event.addListener(searchMarker, 'mouseover', makeOverListener(map, searchMarker, infowindow));
 	    kakao.maps.event.addListener(searchMarker, 'mouseout', makeOutListener(infowindow));
+//	    kakao.maps.event.addListener(searchMarker, 'click', zoomIn(map));
+	    
+	    searchMarkers.push(searchMarker);
+	}
+}
+
+// 기존 마커 지우기 
+function removeSearchMarkers(){
+	for(var i = 0; i < searchMarkers.length; i++){
+		searchMarkers[i].setMap(null);
 	}
 }
 
@@ -250,11 +352,20 @@ function makeOutListener(infowindow) {
     };
 }
 
+//줌인
+function zoomIn(map){
+	console.log('zoomin');
+	let level = map.getLevel();
+	// 지도를 1레벨 내립니다 (지도가 확대됩니다)
+    map.setLevel(level - 1);
+}
+
 //////////////////////////////////////////
 //주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
 function addressMark(coronaList, hospitalName){
+	
 	for(var idx=0; idx<coronaList.length; idx++){
 		// 주소로 좌표를 검색합니다
 		geocoder.addressSearch(coronaList[idx], function(result, status) {
@@ -269,11 +380,11 @@ function addressMark(coronaList, hospitalName){
 		            map: map,
 		            position: coords
 		        });
-		        console.log("hospitalName[idx] 출력2 : "+hospitalName[idx]);
+//		        console.log(hospitalName[idx]);
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new kakao.maps.InfoWindow({
 		            //content: '<div style="width:150px;text-align:center;padding:6px 0;">'+hospitalName[idx]+'</div>'
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">🚑코로나 선별진료소🚑</div>'
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">🚑코로나 선별소🚑</div>'
 		        });
 		        infowindow.open(map, marker);
 		
@@ -282,4 +393,6 @@ function addressMark(coronaList, hospitalName){
 		    } 
 		});
 	}
+	
+	   
 }

@@ -176,6 +176,29 @@ function addFavorite(){
 }
 
 
+//row 옆에 하트 추가하기 
+function setHeartIcon(aptNo){
+	console.log('하트 추가하');
+	console.log("aptNo: "+aptNo);
+	for(var i = 0; i < aptList.length; i++){
+		// map이 true면 하트붙여주기 
+		if(aptList[i].no == aptNo){
+			console.log('i: '+i);
+			break;
+		}
+	}
+}
+
+function findAptIdx(aptNo){
+	for(var i = 0; i < aptList.length; i++){
+		if(aptList[i].no == aptNo){
+			console.log('i: '+i);
+			return i;
+		}
+	}
+}
+
+
 //관심지역 제거  
 function removeFavorite(){
 	console.log("관심지역 제거");
@@ -302,6 +325,7 @@ function searchResult(data){
 		console.log("바디처리"+data.result);
 		aptList = [];
 		$(data.result).each(function(index, apt){
+			let flag = false;
 			let str = `
 			<tr class="apt-row">
 				<td class="aptNo" style="display: none;">${apt.no}</td>
@@ -310,9 +334,20 @@ function searchResult(data){
 				<td>${apt.dealAmount}</td>
 				<td>${apt.area}</td>
 				<td>${apt.floor}</td>
-				<td>${apt.dealYear}.${apt.dealMonth}.${apt.dealDay} </td>
-			</tr>`
-			
+				<td>${apt.dealYear}.${apt.dealMonth}.${apt.dealDay} </td>`
+				for(var i = 0; i < favoriteList.length; i++){
+					// map이 true면 하트붙여주기 
+					if(favoriteList[i].dealno == apt.no){
+						str += `<td><i class="far fa-heart heart-icon favorite"></i></td>`
+						flag = true;
+						break;
+					}
+				}
+				if(!flag){
+					str += `<td><i class="far fa-heart heart-icon not-favorite"></i></td>`
+				}
+			str += `</tr>`
+			console.log(str);
 			$('#table-body').append(str);
 			
 			aptList.push(apt);
@@ -322,41 +357,6 @@ function searchResult(data){
 		// 네비 처리 
 		$('#navi tr td').empty();
 		$('#navi tr td').append(data.navi);
-		
-		//하트 아이콘 설정 
-		console.log(aptList);
-		for(var i = 0; i < aptList.length; i++)
-			setHeartIcon(aptList[i].no, true);
-	}
-}
-
-//row 옆에 하트 추가하기 
-function setHeartIcon(aptNo, map, str){
-	console.log("aptNo: "+aptNo+", map: "+map);
-	for(var i = 0; i < favoriteList.length; i++){
-		// map이 true면 하트붙여주기 
-		if(favoriteList[i].dealno == aptNo){
-			console.log('dealno: '+favoriteList[i].dealno)
-			if(map){
-				let idx = findAptIdx(aptNo);
-				console.log('idx: 추가 '+idx);
-				
-//				$('#navi')  '<i class="far fa-heart heart-icon"></i>';
-			}else{
-				console.log('제거 '+i);
-//				$('#navi').children().eq(i+1).remove('<i class="far fa-heart heart-icon"></i>')
-			}
-			break;
-		}
-	}
-}
-
-function findAptIdx(aptNo){
-	for(var i = 0; i < aptList.length; i++){
-		if(aptList[i].no == aptNo){
-			console.log('i: '+i);
-			return i;
-		}
 	}
 }
 

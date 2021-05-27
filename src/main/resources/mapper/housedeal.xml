@@ -5,7 +5,7 @@
 <mapper namespace="com.ssafy.happyhouse.model.dao.HouseDealDao" >
 	<!-- 아파트로 찾기 -->
 	<select id="searchApt" parameterType="map" resultType="houseDealDto">
-		select  distinct h.no, h.AptName, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, b.dong, i.lat, i.lng, i.buildYear
+		select  distinct h.AptName, h.no, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, b.dong, i.lat, i.lng, i.buildYear
 		from	housedeal h 
 		join baseaddress b
 		using	(dong)
@@ -18,7 +18,7 @@
 	
 	<!-- 동으로 찾기 -->
 	<select id="searchHouse" parameterType="map" resultType="houseDealDto">
-		select 	distinct h.no, h.AptName, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, b.dong, i.lat, i.lng, i.buildYear
+		select 	distinct h.AptName, h.no, h.dealAmount, h.area, h.dealYear, h.dealMonth, h.dealDay, h.floor, h.jibun, b.city, b.gugun, b.dong, i.lat, i.lng, i.buildYear
 		from	housedeal h 
 		left 	outer join baseaddress b
 		using	(dong)

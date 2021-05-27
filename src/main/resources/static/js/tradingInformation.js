@@ -101,7 +101,8 @@ $(function(){
 	
 	// 아파트 상세 정보 띄우기(모달창) 
 	$("#table-body").on("click", ".apt-row", function(event){
-		
+		console.log('modal open');
+		console.log(favoriteList);
 		let aptNo = $(this).find("td").first().text().trim();
 		
 		let idx;
@@ -151,34 +152,36 @@ function addFavorite(){
 		address = arr2[2],
 		dealno = $('#aptInfoModal #modal-aptNo').text() * 1,
 		aptName = $('#aptInfoModal #aptName').text();
-		
-	let data = {no:0, userno: 0, dealno: dealno, aptName: aptName, dong: address};
+	
+	console.log('dealno: '+dealno);
+	let data = {'no':0, 'userno': 0, 'dealno': dealno, 'aptName': aptName, 'dong': address};
 	console.log(data);
 	$.ajax({
 		 url: 'favorite',
 		 type: 'POST',
 		 contentType: 'application/json;charset=utf-8',
-		 dataType:'json',
 		 data: JSON.stringify(data),
+		 dataType:'text',
 		 success : function(jsondata){
-			 if(jsondata =='success'){
-				 console.log('추가 잘됨');
-			 }else{
-				 alert('관심 지역 추가하는데 오류가 발생했습니다.');
-			 }
+			 initFavoriteList();
+//			 if(jsondata=='success'){
+//				 console.log('추가 잘됨');
+//				
+//			 }else{
+//				 alert('관심 지역 추가하는데 오류가 발생했습니다.');
+//			 }
 		 },
 		 error: function(xhr, status, err){
 				console.log(err);
 		}
 	});
-	favoriteList.push(data);
 	setHeartIcon(dealno, true);
 }
 
 
 //row 옆에 하트 추가하기 
-function setHeartIcon(aptNo){
-	console.log('하트 추가하');
+function setHeartIcon(aptNo, flag){
+	console.log('하트 추가하기');
 	console.log("aptNo: "+aptNo);
 	for(var i = 0; i < aptList.length; i++){
 		// map이 true면 하트붙여주기 
@@ -187,32 +190,49 @@ function setHeartIcon(aptNo){
 			break;
 		}
 	}
+	if(flag){
+		$('#table-body tr').eq(i).find('td:last-child i').removeClass('not-favorite');
+		$('#table-body tr').eq(i).find('td:last-child i').addClass('favorite');
+	}else{
+		$('#table-body tr').eq(i).find('td:last-child i').removeClass('favorite');
+		$('#table-body tr').eq(i).find('td:last-child i').addClass('not-favorite');
+	}
 }
 
 
 //관심지역 제거  
 function removeFavorite(){
 	console.log("관심지역 제거");
-	let no = favoriteList[favIdx].no;
+	console.log(favoriteList);
+	let dealno = $('#aptInfoModal #modal-aptNo').text() * 1
+	console.log('dealno: '+dealno);
+	let no = 0;
+	for(var i = 0; i < favoriteList.length; i++){
+		if(favoriteList[i].dealno == dealno){
+			no = favoriteList[i].no;
+			break;
+		}
+	}
 	console.log(no);
 	
 	$.ajax({
 		 url: 'favorite/' + no,
 		 type: 'DELETE',
 		 contentType: 'application/json;charset=utf-8',
-		 dataType:'json',
+		 dataType:'text',
 		 success : function(jsondata){
 			 if(jsondata =='success'){
 				 console.log("제거 잘됨");
+				 initFavoriteList();
 			 }else{
 				 alert('관심 지역 제거하는 데 오류가 발생햇습니다.');
 			 }
 		 },
 		 error: function(xhr, status, err){
 				console.log(err);
-		}
-	});
-	initFavoriteList();
+		 }
+	}); 
+	setHeartIcon(dealno, false);
 }
 
 //////////////////////////////////////////////
@@ -327,13 +347,13 @@ function searchResult(data){
 				for(var i = 0; i < favoriteList.length; i++){
 					// map이 true면 하트붙여주기 
 					if(favoriteList[i].dealno == apt.no){
-						str += `<td><i class="far fa-heart heart-icon favorite"></i></td>`
+						str += `<td><i class="fas fa-heart heart-icon favorite"></i></td>`
 						flag = true;
 						break;
 					}
 				}
 				if(!flag){
-					str += `<td><i class="far fa-heart heart-icon not-favorite"></i></td>`
+					str += `<td><i class="fas fa-heart heart-icon not-favorite"></i></td>`
 				}
 			str += `</tr>`
 			console.log(str);
@@ -342,7 +362,7 @@ function searchResult(data){
 			aptList.push(apt);
 		});
 		
-		console.log(data.navi);
+//		console.log(data.navi);
 		// 네비 처리 
 		$('#navi tr td').empty();
 		$('#navi tr td').append(data.navi);
@@ -376,6 +396,7 @@ function setLocation(data){
 
 //유저가 갖고 있는 favorite list 값 가져오기
 function initFavoriteList(){
+	console.log('init favorite list');
 	favoriteList = [];
 	$.ajax({
 		 url: 'favorite',
@@ -394,8 +415,7 @@ function initFavoriteList(){
 				console.log(err);
 		}
 	});
-	
-	console.log(positions);
-	//initMap();
+	console.log('init');
+	console.log(favoriteList);
 }
 

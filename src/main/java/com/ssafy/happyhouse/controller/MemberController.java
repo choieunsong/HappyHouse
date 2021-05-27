@@ -133,10 +133,12 @@ public class MemberController {
 
 	// myPage 회원정보 수정
 	@RequestMapping(value = "/modifyMypage", method = RequestMethod.POST)
-	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto) {
+	public ResponseEntity<List<MemberDto>> modifyMypage(@RequestBody MemberDto memberDto, Model model, HttpSession session,
+			HttpServletResponse response) {
 		int cnt = memberService.modifyMember(memberDto);
 		if (cnt != 0) {
 			List<MemberDto> list = memberService.userList();
+			session.setAttribute("userinfo", memberDto);
 			System.out.println(memberDto.toString());
 			String redirect_uri = "home";
 			return new ResponseEntity<List<MemberDto>>(list, HttpStatus.OK);

@@ -139,12 +139,12 @@
                         </div>
                         <!-- dropdown col-sm-3 -->
                         <div class="col-sm-3 no-padding">
-                           <div class="form-group col-sm-6">
-                              <button type="button" id="area-search" class="form-control btn-primary" value="${root}">검색</button>
-                           </div>
-                           <div  class = "form-group col-sm-6">
-	                        <button type="button" class="form-control btn-outline-primary " id="corona-search" value="${root}">선별진료소</button>
-	                       </div>
+                           <!-- <div class="form-group col-md-6"> -->
+                           	<button type="button" id="area-search" class="form-control btn-primary col-md-5" style="float:left" value="${root}">검색</button>
+                           <!-- </div> -->
+                           <!-- <div class = "form-group col-md-6"> -->
+                           		<button type="button" class="form-control btn-outline-info col-md-7" id="corona-search" style="float:left" value="${root}">🚑선별진료소🚑</button>
+	                       <!-- </div> -->
                         </div>
                     </div>
                </div>

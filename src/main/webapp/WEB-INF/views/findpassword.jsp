@@ -12,7 +12,7 @@
 <title>비밀번호 찾기</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${root}/css/bootstrap.css" />
 <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${root}/css/main.css" />

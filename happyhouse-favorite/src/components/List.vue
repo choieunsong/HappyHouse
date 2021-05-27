@@ -59,11 +59,23 @@ export default {
     },
     methods: {
         moveHandler(deal){
+            console.log('list -- moveHandler');
             console.log(deal);
+            console.log('list get ready for query');
+            let query = {
+                x : deal.lng,
+                y : deal.lat,
+                aptName: deal.aptName,
+                dong: deal.dong
+            };
+            console.log(query); 
             setTimeout(()=>{
                 bus.$emit('setDetail', deal);
                 bus.$emit('toggleIsClick');
+                bus.$emit('search', query);
             }, 100);
+
+            
         },
         remove(e){
             console.log('remove event');

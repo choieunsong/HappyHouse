@@ -23,9 +23,9 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    <script type="text/javascript" src='${root }/js/tradingInformation.js'></script>
-    <script type="text/javascript" src='${root }/js/home.js'></script>
-    <script type="text/javascript" src='${root }/js/popper.min.js'></script>
+    <script type="text/javascript" src='${root}/js/tradingInformation.js'></script>
+    <script type="text/javascript" src='${root}/js/home.js'></script>
+    <script type="text/javascript" src='${root}/js/popper.min.js'></script>
     <style>
         #map{
             height: 100%;
@@ -138,11 +138,11 @@
                           </div>
                         </div>
                         <!-- dropdown col-sm-3 -->
-                        <div class="col-sm-3 btn-group no-padding">
-                           <div class="form-group">
+                        <div class="col-sm-3 no-padding">
+                           <div class="form-group col-sm-6">
                               <button type="button" id="area-search" class="form-control btn-primary" value="${root}">검색</button>
                            </div>
-                           <div  class = "form-group">
+                           <div  class = "form-group col-sm-6">
 	                        <button type="button" class="form-control btn-outline-primary " id="corona-search" value="${root}">선별진료소</button>
 	                       </div>
                         </div>

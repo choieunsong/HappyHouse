@@ -47,7 +47,7 @@
 					<c:if test = "${userinfo.state eq 1}">
 					  <a id="navAdmin" class="dropdown-item  " href="${root }/user/list" style="font-size:15px">Admin</a>
 					</c:if>
-				  <a id="navLogout" class="dropdown-item nav-link navLogout" type="button" onclick="logoutResult()" style="font-size:15px">Logout</a>
+				  <a id="navLogout" class="dropdown-item" type="button" href="${root}/user/logout" style="font-size:15px">Logout</a>
 			   </c:otherwise>
 	       	  </c:choose>
 	        </div>

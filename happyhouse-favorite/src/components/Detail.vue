@@ -1,11 +1,5 @@
 <template>
     <div class="row">
-        <div v-if="flag" class="conainer" style="width:100%;">
-            <h3 class="text-center">상세 정보</h3>
-        </div>
-        <div v-else  class="conainer" style="width:100%;">
-            <h3 class="text-center">관심 지역이 없습니다.</h3>
-        </div>
         <div class="container" style="margin-top: 30px;">
             <table class="table table-borderless" align="center">
                 <tr class="second">

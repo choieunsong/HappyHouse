@@ -36,7 +36,16 @@ export default {
             this.$store.dispatch("setUserInfo", data);
             console.log(this.getUserInfo);
         });
-
+    //   let data = {
+    //     userno: 9,
+    //     userid: "ssafy",
+    //     email: "song@naver.com",
+    //     username: "ssafy",
+    //     address: "수원시 권선구",
+    //     state: 0,
+    // }
+    // this.$store.dispatch("setUserInfo", data);
+    // console.log(this.getUserInfo);
     this.$router.push("/happyhouse/favorite");
     setTimeout(()=>{
       bus.$emit('favoriteList');

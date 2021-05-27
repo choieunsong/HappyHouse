@@ -1,7 +1,7 @@
 s<template>
     <div class="container-fluid" style="margin-top: 20px">
         <section class="head">
-            <div class="container">
+            <div class="container" style="margin-bottom: 30px;">
             <h1><strong class="title">{{getUserInfo.username}}</strong>님의 관심지역 목록</h1>
             </div>
         </section>
@@ -100,6 +100,7 @@ export default {
                 {name: '식당', code: 'FD6'},
                 {name: '카페', code: 'CE7'}],
             markers: [],   
+            circle: {},
             x: '',
             y: '',
         }
@@ -199,7 +200,7 @@ export default {
             this.setCenter(query.y, query.x);
 
            // 지도에 표시할 원을 생성합니다
-            var circle = new kakao.maps.Circle({
+            this.circle = new kakao.maps.Circle({
                 center : markerPosition,  // 원의 중심좌표 입니다 
                 radius: 500, // 미터 단위의 원의 반지름입니다 
                 strokeWeight:4, // 선의 두께입니다 
@@ -211,7 +212,7 @@ export default {
             }); 
 
             // 지도에 원을 표시합니다 
-            circle.setMap(this.map); 
+            this.circle.setMap(this.map); 
 
 
             // 주변 데이터 개수 가져오기 
@@ -337,10 +338,6 @@ export default {
                 for(var i = 0; i < data.documents.length; i++){
                     var info = data.documents[i];
                     var imageSize = new kakao.maps.Size(30, 30);
-                        // imageOptions = {
-                        //     spriteOrigin: new kakao.maps.Point(10, 0),    
-                        //     spriteSize: new kakao.maps.Size(36, 98)  
-                        // };
                     let markerImage = new kakao.maps.MarkerImage(markerImageSrc, imageSize);
 
                     var marker = new kakao.maps.Marker({
@@ -351,7 +348,7 @@ export default {
                     console.log('info');
                     console.log(info);
                     var infowindow = new kakao.maps.InfoWindow({
-                        // position: marker.position,
+                        position: marker.position,
                         // content: '<div class="placeinfo">' +
                         //             +'<a class="title" href="'+info.place_url+'>'+info.place_name+'</a>'
                         //             +'<span class="title">'+info.road_address_name+'</span>'

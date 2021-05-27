@@ -91,7 +91,7 @@
 	    </div>
 	    <div class="col-sm-6">
 	      <p><strong>최은송</strong></p><br>
-	      <img src="bandmember.jpg" style="width:70%" alt="최은송">
+	      <img src="img/es.png" style="width:40%" alt="최은송">
 	    </div>
 	  </div>
 	</div>

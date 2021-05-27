@@ -259,9 +259,7 @@ function searchCorona(dong, pg){
 		 contentType: 'application/json;charset=utf-8',
 		 dataType:'json',
 		 success : function(jsondata){
-			 //console.log("리졸투.."+jsondata.result);
 			 makeList(jsondata);
-			 //setLocation(jsondata.result);
 			 addressMark(coronaList, hospitalName);
 		 },
 		 error: function(xhr, status, err){

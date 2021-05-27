@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${root}/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${root}/css/main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
   	<link rel="stylesheet" type="text/css" href="${root}/css/font.css"/>
@@ -70,7 +71,7 @@
         <div class="container my-5">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <h2>🏚 CHOICHOI HOUSE 🏚</h2>
+                    <h2>🏙 CHOICHOI HOUSE 🏙</h2>
                     <p class="lead">로그인 후, 거래정보 검색 페이지를 통해 지역별 거래정보와 아파트별 거래정보를 검색해볼 수 있습니다.</p>
                     <p class="mb-0"></p>
                 </div>
